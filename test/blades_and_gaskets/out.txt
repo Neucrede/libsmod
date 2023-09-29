@@ -1,0 +1,2260 @@
+Registering template images...
+Angle = 0, Scale = 0.9
+Extracting template. L = 0
+Have no enough features, exaustive mode
+Number of features: 108
+Extracting template. L = 1
+Have no enough features, exaustive mode
+Number of features: 51
+Angle = 1, Scale = 0.9
+Computed from reference features.
+Angle = -1, Scale = 0.9
+Computed from reference features.
+Angle = 2, Scale = 0.9
+Computed from reference features.
+Angle = -2, Scale = 0.9
+Computed from reference features.
+Angle = 3, Scale = 0.9
+Computed from reference features.
+Angle = -3, Scale = 0.9
+Computed from reference features.
+Angle = 4, Scale = 0.9
+Computed from reference features.
+Angle = -4, Scale = 0.9
+Computed from reference features.
+Angle = 5, Scale = 0.9
+Computed from reference features.
+Angle = -5, Scale = 0.9
+Computed from reference features.
+Angle = 6, Scale = 0.9
+Computed from reference features.
+Angle = -6, Scale = 0.9
+Computed from reference features.
+Angle = -7, Scale = 0.9
+Computed from reference features.
+Angle = 7, Scale = 0.9
+Computed from reference features.
+Angle = -8, Scale = 0.9
+Computed from reference features.
+Angle = 8, Scale = 0.9
+Computed from reference features.
+Angle = 9, Scale = 0.9
+Computed from reference features.
+Angle = -9, Scale = 0.9
+Computed from reference features.
+Angle = 10, Scale = 0.9
+Computed from reference features.
+Angle = -10, Scale = 0.9
+Computed from reference features.
+Angle = -11, Scale = 0.9
+Computed from reference features.
+Angle = 11, Scale = 0.9
+Computed from reference features.
+Angle = -12, Scale = 0.9
+Computed from reference features.
+Angle = 12, Scale = 0.9
+Computed from reference features.
+Angle = -13, Scale = 0.9
+Computed from reference features.
+Angle = 13, Scale = 0.9
+Computed from reference features.
+Angle = -14, Scale = 0.9
+Computed from reference features.
+Angle = 14, Scale = 0.9
+Computed from reference features.
+Angle = -15, Scale = 0.9
+Computed from reference features.
+Angle = 15, Scale = 0.9
+Computed from reference features.
+Angle = -16, Scale = 0.9
+Computed from reference features.
+Angle = 16, Scale = 0.9
+Computed from reference features.
+Angle = -17, Scale = 0.9
+Computed from reference features.
+Angle = 17, Scale = 0.9
+Computed from reference features.
+Angle = -18, Scale = 0.9
+Computed from reference features.
+Angle = 18, Scale = 0.9
+Computed from reference features.
+Angle = 19, Scale = 0.9
+Computed from reference features.
+Angle = -19, Scale = 0.9
+Computed from reference features.
+Angle = -20, Scale = 0.9
+Computed from reference features.
+Angle = 20, Scale = 0.9
+Computed from reference features.
+Angle = 21, Scale = 0.9
+Computed from reference features.
+Angle = -21, Scale = 0.9
+Computed from reference features.
+Angle = 22, Scale = 0.9
+Computed from reference features.
+Angle = -22, Scale = 0.9
+Computed from reference features.
+Angle = 23, Scale = 0.9
+Computed from reference features.
+Angle = -23, Scale = 0.9
+Computed from reference features.
+Angle = 24, Scale = 0.9
+Computed from reference features.
+Angle = -24, Scale = 0.9
+Computed from reference features.
+Angle = 25, Scale = 0.9
+Computed from reference features.
+Angle = -25, Scale = 0.9
+Computed from reference features.
+Angle = 26, Scale = 0.9
+Computed from reference features.
+Angle = -26, Scale = 0.9
+Computed from reference features.
+Angle = -27, Scale = 0.9
+Computed from reference features.
+Angle = 27, Scale = 0.9
+Computed from reference features.
+Angle = -28, Scale = 0.9
+Computed from reference features.
+Angle = 28, Scale = 0.9
+Computed from reference features.
+Angle = -29, Scale = 0.9
+Computed from reference features.
+Angle = 29, Scale = 0.9
+Computed from reference features.
+Angle = -30, Scale = 0.9
+Computed from reference features.
+Angle = 30, Scale = 0.9
+Computed from reference features.
+Angle = -31, Scale = 0.9
+Computed from reference features.
+Angle = 31, Scale = 0.9
+Computed from reference features.
+Angle = -32, Scale = 0.9
+Computed from reference features.
+Angle = 32, Scale = 0.9
+Computed from reference features.
+Angle = -33, Scale = 0.9
+Computed from reference features.
+Angle = 33, Scale = 0.9
+Computed from reference features.
+Angle = 34, Scale = 0.9
+Computed from reference features.
+Angle = -34, Scale = 0.9
+Computed from reference features.
+Angle = 35, Scale = 0.9
+Computed from reference features.
+Angle = -35, Scale = 0.9
+Computed from reference features.
+Angle = 36, Scale = 0.9
+Computed from reference features.
+Angle = -36, Scale = 0.9
+Computed from reference features.
+Angle = -37, Scale = 0.9
+Computed from reference features.
+Angle = 37, Scale = 0.9
+Computed from reference features.
+Angle = 38, Scale = 0.9
+Computed from reference features.
+Angle = -38, Scale = 0.9
+Computed from reference features.
+Angle = -39, Scale = 0.9
+Computed from reference features.
+Angle = 39, Scale = 0.9
+Computed from reference features.
+Angle = -40, Scale = 0.9
+Computed from reference features.
+Angle = 40, Scale = 0.9
+Computed from reference features.
+Angle = -41, Scale = 0.9
+Computed from reference features.
+Angle = 41, Scale = 0.9
+Computed from reference features.
+Angle = 42, Scale = 0.9
+Computed from reference features.
+Angle = -42, Scale = 0.9
+Computed from reference features.
+Angle = 43, Scale = 0.9
+Computed from reference features.
+Angle = -43, Scale = 0.9
+Computed from reference features.
+Angle = -44, Scale = 0.9
+Computed from reference features.
+Angle = 44, Scale = 0.9
+Computed from reference features.
+Angle = 45, Scale = 0.9
+Computed from reference features.
+Angle = -45, Scale = 0.9
+Computed from reference features.
+Angle = 46, Scale = 0.9
+Computed from reference features.
+Angle = -46, Scale = 0.9
+Computed from reference features.
+Angle = -47, Scale = 0.9
+Computed from reference features.
+Angle = 47, Scale = 0.9
+Computed from reference features.
+Angle = -48, Scale = 0.9
+Computed from reference features.
+Angle = 48, Scale = 0.9
+Computed from reference features.
+Angle = -49, Scale = 0.9
+Computed from reference features.
+Angle = 49, Scale = 0.9
+Computed from reference features.
+Angle = -50, Scale = 0.9
+Computed from reference features.
+Angle = 50, Scale = 0.9
+Computed from reference features.
+Angle = -51, Scale = 0.9
+Computed from reference features.
+Angle = 51, Scale = 0.9
+Computed from reference features.
+Angle = -52, Scale = 0.9
+Computed from reference features.
+Angle = 52, Scale = 0.9
+Computed from reference features.
+Angle = -53, Scale = 0.9
+Computed from reference features.
+Angle = 53, Scale = 0.9
+Computed from reference features.
+Angle = 54, Scale = 0.9
+Computed from reference features.
+Angle = -54, Scale = 0.9
+Computed from reference features.
+Angle = 55, Scale = 0.9
+Computed from reference features.
+Angle = -55, Scale = 0.9
+Computed from reference features.
+Angle = 56, Scale = 0.9
+Computed from reference features.
+Angle = -56, Scale = 0.9
+Computed from reference features.
+Angle = 57, Scale = 0.9
+Computed from reference features.
+Angle = -57, Scale = 0.9
+Computed from reference features.
+Angle = -58, Scale = 0.9
+Computed from reference features.
+Angle = 58, Scale = 0.9
+Computed from reference features.
+Angle = 59, Scale = 0.9
+Computed from reference features.
+Angle = -59, Scale = 0.9
+Computed from reference features.
+Angle = -60, Scale = 0.9
+Computed from reference features.
+Angle = 60, Scale = 0.9
+Computed from reference features.
+Angle = -61, Scale = 0.9
+Computed from reference features.
+Angle = 61, Scale = 0.9
+Computed from reference features.
+Angle = -62, Scale = 0.9
+Computed from reference features.
+Angle = 62, Scale = 0.9
+Computed from reference features.
+Angle = -63, Scale = 0.9
+Computed from reference features.
+Angle = 63, Scale = 0.9
+Computed from reference features.
+Angle = -64, Scale = 0.9
+Computed from reference features.
+Angle = 64, Scale = 0.9
+Computed from reference features.
+Angle = -65, Scale = 0.9
+Computed from reference features.
+Angle = 65, Scale = 0.9
+Computed from reference features.
+Angle = 66, Scale = 0.9
+Computed from reference features.
+Angle = -66, Scale = 0.9
+Computed from reference features.
+Angle = 67, Scale = 0.9
+Computed from reference features.
+Angle = -67, Scale = 0.9
+Computed from reference features.
+Angle = 68, Scale = 0.9
+Computed from reference features.
+Angle = -68, Scale = 0.9
+Computed from reference features.
+Angle = 69, Scale = 0.9
+Computed from reference features.
+Angle = -69, Scale = 0.9
+Computed from reference features.
+Angle = 70, Scale = 0.9
+Computed from reference features.
+Angle = -70, Scale = 0.9
+Computed from reference features.
+Angle = -71, Scale = 0.9
+Computed from reference features.
+Angle = 71, Scale = 0.9
+Computed from reference features.
+Angle = -72, Scale = 0.9
+Computed from reference features.
+Angle = 72, Scale = 0.9
+Computed from reference features.
+Angle = -73, Scale = 0.9
+Computed from reference features.
+Angle = 73, Scale = 0.9
+Computed from reference features.
+Angle = -74, Scale = 0.9
+Computed from reference features.
+Angle = 74, Scale = 0.9
+Computed from reference features.
+Angle = -75, Scale = 0.9
+Computed from reference features.
+Angle = 75, Scale = 0.9
+Computed from reference features.
+Angle = -76, Scale = 0.9
+Computed from reference features.
+Angle = 76, Scale = 0.9
+Computed from reference features.
+Angle = -77, Scale = 0.9
+Computed from reference features.
+Angle = 77, Scale = 0.9
+Computed from reference features.
+Angle = 78, Scale = 0.9
+Computed from reference features.
+Angle = -78, Scale = 0.9
+Computed from reference features.
+Angle = 79, Scale = 0.9
+Computed from reference features.
+Angle = -79, Scale = 0.9
+Computed from reference features.
+Angle = 80, Scale = 0.9
+Computed from reference features.
+Angle = -80, Scale = 0.9
+Computed from reference features.
+Angle = 81, Scale = 0.9
+Computed from reference features.
+Angle = -81, Scale = 0.9
+Computed from reference features.
+Angle = 82, Scale = 0.9
+Computed from reference features.
+Angle = -82, Scale = 0.9
+Computed from reference features.
+Angle = -83, Scale = 0.9
+Computed from reference features.
+Angle = 83, Scale = 0.9
+Computed from reference features.
+Angle = -84, Scale = 0.9
+Computed from reference features.
+Angle = 84, Scale = 0.9
+Computed from reference features.
+Angle = 85, Scale = 0.9
+Computed from reference features.
+Angle = -85, Scale = 0.9
+Computed from reference features.
+Angle = -86, Scale = 0.9
+Computed from reference features.
+Angle = 86, Scale = 0.9
+Computed from reference features.
+Angle = 87, Scale = 0.9
+Computed from reference features.
+Angle = -87, Scale = 0.9
+Computed from reference features.
+Angle = -88, Scale = 0.9
+Computed from reference features.
+Angle = 88, Scale = 0.9
+Computed from reference features.
+Angle = -89, Scale = 0.9
+Computed from reference features.
+Angle = 89, Scale = 0.9
+Computed from reference features.
+Angle = 90, Scale = 0.9
+Computed from reference features.
+Angle = -90, Scale = 0.9
+Computed from reference features.
+Angle = 91, Scale = 0.9
+Computed from reference features.
+Angle = -91, Scale = 0.9
+Computed from reference features.
+Angle = 92, Scale = 0.9
+Computed from reference features.
+Angle = -92, Scale = 0.9
+Computed from reference features.
+Angle = 93, Scale = 0.9
+Computed from reference features.
+Angle = -93, Scale = 0.9
+Computed from reference features.
+Angle = -94, Scale = 0.9
+Computed from reference features.
+Angle = 94, Scale = 0.9
+Computed from reference features.
+Angle = -95, Scale = 0.9
+Computed from reference features.
+Angle = 95, Scale = 0.9
+Computed from reference features.
+Angle = -96, Scale = 0.9
+Computed from reference features.
+Angle = 96, Scale = 0.9
+Computed from reference features.
+Angle = -97, Scale = 0.9
+Computed from reference features.
+Angle = 97, Scale = 0.9
+Computed from reference features.
+Angle = -98, Scale = 0.9
+Computed from reference features.
+Angle = 98, Scale = 0.9
+Computed from reference features.
+Angle = -99, Scale = 0.9
+Computed from reference features.
+Angle = 99, Scale = 0.9
+Computed from reference features.
+Angle = 100, Scale = 0.9
+Computed from reference features.
+Angle = -100, Scale = 0.9
+Computed from reference features.
+Angle = 101, Scale = 0.9
+Computed from reference features.
+Angle = -101, Scale = 0.9
+Computed from reference features.
+Angle = 102, Scale = 0.9
+Computed from reference features.
+Angle = -102, Scale = 0.9
+Computed from reference features.
+Angle = 103, Scale = 0.9
+Computed from reference features.
+Angle = -103, Scale = 0.9
+Computed from reference features.
+Angle = 104, Scale = 0.9
+Computed from reference features.
+Angle = -104, Scale = 0.9
+Computed from reference features.
+Angle = -105, Scale = 0.9
+Computed from reference features.
+Angle = 105, Scale = 0.9
+Computed from reference features.
+Angle = 106, Scale = 0.9
+Computed from reference features.
+Angle = -106, Scale = 0.9
+Computed from reference features.
+Angle = 107, Scale = 0.9
+Computed from reference features.
+Angle = -107, Scale = 0.9
+Computed from reference features.
+Angle = 108, Scale = 0.9
+Computed from reference features.
+Angle = -108, Scale = 0.9
+Computed from reference features.
+Angle = 109, Scale = 0.9
+Computed from reference features.
+Angle = -109, Scale = 0.9
+Computed from reference features.
+Angle = -110, Scale = 0.9
+Computed from reference features.
+Angle = 110, Scale = 0.9
+Computed from reference features.
+Angle = 111, Scale = 0.9
+Computed from reference features.
+Angle = -111, Scale = 0.9
+Computed from reference features.
+Angle = -112, Scale = 0.9
+Computed from reference features.
+Angle = 112, Scale = 0.9
+Computed from reference features.
+Angle = 113, Scale = 0.9
+Computed from reference features.
+Angle = -113, Scale = 0.9
+Computed from reference features.
+Angle = 114, Scale = 0.9
+Computed from reference features.
+Angle = -114, Scale = 0.9
+Computed from reference features.
+Angle = -115, Scale = 0.9
+Computed from reference features.
+Angle = 115, Scale = 0.9
+Computed from reference features.
+Angle = -116, Scale = 0.9
+Computed from reference features.
+Angle = 116, Scale = 0.9
+Computed from reference features.
+Angle = -117, Scale = 0.9
+Computed from reference features.
+Angle = 117, Scale = 0.9
+Computed from reference features.
+Angle = 118, Scale = 0.9
+Computed from reference features.
+Angle = -118, Scale = 0.9
+Computed from reference features.
+Angle = -119, Scale = 0.9
+Computed from reference features.
+Angle = 119, Scale = 0.9
+Computed from reference features.
+Angle = -120, Scale = 0.9
+Computed from reference features.
+Angle = 120, Scale = 0.9
+Computed from reference features.
+Angle = 121, Scale = 0.9
+Computed from reference features.
+Angle = -121, Scale = 0.9
+Computed from reference features.
+Angle = -122, Scale = 0.9
+Computed from reference features.
+Angle = 122, Scale = 0.9
+Computed from reference features.
+Angle = -123, Scale = 0.9
+Computed from reference features.
+Angle = 123, Scale = 0.9
+Computed from reference features.
+Angle = -124, Scale = 0.9
+Computed from reference features.
+Angle = 124, Scale = 0.9
+Computed from reference features.
+Angle = -125, Scale = 0.9
+Computed from reference features.
+Angle = 125, Scale = 0.9
+Computed from reference features.
+Angle = -126, Scale = 0.9
+Computed from reference features.
+Angle = 126, Scale = 0.9
+Computed from reference features.
+Angle = 127, Scale = 0.9
+Computed from reference features.
+Angle = -127, Scale = 0.9
+Computed from reference features.
+Angle = -128, Scale = 0.9
+Computed from reference features.
+Angle = 128, Scale = 0.9
+Computed from reference features.
+Angle = -129, Scale = 0.9
+Computed from reference features.
+Angle = 129, Scale = 0.9
+Computed from reference features.
+Angle = 130, Scale = 0.9
+Computed from reference features.
+Angle = -130, Scale = 0.9
+Computed from reference features.
+Angle = 131, Scale = 0.9
+Computed from reference features.
+Angle = -131, Scale = 0.9
+Computed from reference features.
+Angle = -132, Scale = 0.9
+Computed from reference features.
+Angle = 132, Scale = 0.9
+Computed from reference features.
+Angle = 133, Scale = 0.9
+Computed from reference features.
+Angle = -133, Scale = 0.9
+Computed from reference features.
+Angle = -134, Scale = 0.9
+Computed from reference features.
+Angle = 134, Scale = 0.9
+Computed from reference features.
+Angle = 135, Scale = 0.9
+Computed from reference features.
+Angle = -135, Scale = 0.9
+Computed from reference features.
+Angle = -136, Scale = 0.9
+Computed from reference features.
+Angle = 136, Scale = 0.9
+Computed from reference features.
+Angle = -137, Scale = 0.9
+Computed from reference features.
+Angle = 137, Scale = 0.9
+Computed from reference features.
+Angle = 138, Scale = 0.9
+Computed from reference features.
+Angle = -138, Scale = 0.9
+Computed from reference features.
+Angle = 139, Scale = 0.9
+Computed from reference features.
+Angle = -139, Scale = 0.9
+Computed from reference features.
+Angle = 140, Scale = 0.9
+Computed from reference features.
+Angle = -140, Scale = 0.9
+Computed from reference features.
+Angle = 141, Scale = 0.9
+Computed from reference features.
+Angle = -141, Scale = 0.9
+Computed from reference features.
+Angle = -142, Scale = 0.9
+Computed from reference features.
+Angle = 142, Scale = 0.9
+Computed from reference features.
+Angle = -143, Scale = 0.9
+Computed from reference features.
+Angle = 143, Scale = 0.9
+Computed from reference features.
+Angle = -144, Scale = 0.9
+Computed from reference features.
+Angle = 144, Scale = 0.9
+Computed from reference features.
+Angle = -145, Scale = 0.9
+Computed from reference features.
+Angle = 145, Scale = 0.9
+Computed from reference features.
+Angle = 146, Scale = 0.9
+Computed from reference features.
+Angle = -146, Scale = 0.9
+Computed from reference features.
+Angle = 147, Scale = 0.9
+Computed from reference features.
+Angle = -147, Scale = 0.9
+Computed from reference features.
+Angle = 148, Scale = 0.9
+Computed from reference features.
+Angle = -148, Scale = 0.9
+Computed from reference features.
+Angle = 149, Scale = 0.9
+Computed from reference features.
+Angle = -149, Scale = 0.9
+Computed from reference features.
+Angle = 150, Scale = 0.9
+Computed from reference features.
+Angle = -150, Scale = 0.9
+Computed from reference features.
+Angle = 151, Scale = 0.9
+Computed from reference features.
+Angle = -151, Scale = 0.9
+Computed from reference features.
+Angle = -152, Scale = 0.9
+Computed from reference features.
+Angle = 152, Scale = 0.9
+Computed from reference features.
+Angle = -153, Scale = 0.9
+Computed from reference features.
+Angle = 153, Scale = 0.9
+Computed from reference features.
+Angle = 154, Scale = 0.9
+Computed from reference features.
+Angle = -154, Scale = 0.9
+Computed from reference features.
+Angle = 155, Scale = 0.9
+Computed from reference features.
+Angle = -155, Scale = 0.9
+Computed from reference features.
+Angle = -156, Scale = 0.9
+Computed from reference features.
+Angle = 156, Scale = 0.9
+Computed from reference features.
+Angle = 157, Scale = 0.9
+Computed from reference features.
+Angle = -157, Scale = 0.9
+Computed from reference features.
+Angle = -158, Scale = 0.9
+Computed from reference features.
+Angle = 158, Scale = 0.9
+Computed from reference features.
+Angle = 159, Scale = 0.9
+Computed from reference features.
+Angle = -159, Scale = 0.9
+Computed from reference features.
+Angle = -160, Scale = 0.9
+Computed from reference features.
+Angle = 160, Scale = 0.9
+Computed from reference features.
+Angle = -161, Scale = 0.9
+Computed from reference features.
+Angle = 161, Scale = 0.9
+Computed from reference features.
+Angle = -162, Scale = 0.9
+Computed from reference features.
+Angle = 162, Scale = 0.9
+Computed from reference features.
+Angle = -163, Scale = 0.9
+Computed from reference features.
+Angle = 163, Scale = 0.9
+Computed from reference features.
+Angle = -164, Scale = 0.9
+Computed from reference features.
+Angle = 164, Scale = 0.9
+Computed from reference features.
+Angle = -165, Scale = 0.9
+Computed from reference features.
+Angle = 165, Scale = 0.9
+Computed from reference features.
+Angle = -166, Scale = 0.9
+Computed from reference features.
+Angle = 166, Scale = 0.9
+Computed from reference features.
+Angle = -167, Scale = 0.9
+Computed from reference features.
+Angle = 167, Scale = 0.9
+Computed from reference features.
+Angle = -168, Scale = 0.9
+Computed from reference features.
+Angle = 168, Scale = 0.9
+Computed from reference features.
+Angle = 169, Scale = 0.9
+Computed from reference features.
+Angle = -169, Scale = 0.9
+Computed from reference features.
+Angle = -170, Scale = 0.9
+Computed from reference features.
+Angle = 170, Scale = 0.9
+Computed from reference features.
+Angle = -171, Scale = 0.9
+Computed from reference features.
+Angle = 171, Scale = 0.9
+Computed from reference features.
+Angle = -172, Scale = 0.9
+Computed from reference features.
+Angle = 172, Scale = 0.9
+Computed from reference features.
+Angle = -173, Scale = 0.9
+Computed from reference features.
+Angle = 173, Scale = 0.9
+Computed from reference features.
+Angle = -174, Scale = 0.9
+Computed from reference features.
+Angle = 174, Scale = 0.9
+Computed from reference features.
+Angle = 175, Scale = 0.9
+Computed from reference features.
+Angle = -175, Scale = 0.9
+Computed from reference features.
+Angle = -176, Scale = 0.9
+Computed from reference features.
+Angle = 176, Scale = 0.9
+Computed from reference features.
+Angle = -177, Scale = 0.9
+Computed from reference features.
+Angle = 177, Scale = 0.9
+Computed from reference features.
+Angle = 178, Scale = 0.9
+Computed from reference features.
+Angle = -178, Scale = 0.9
+Computed from reference features.
+Angle = 179, Scale = 0.9
+Computed from reference features.
+Angle = -179, Scale = 0.9
+Computed from reference features.
+Angle = -180, Scale = 0.9
+Computed from reference features.
+Angle = 180, Scale = 0.9
+Computed from reference features.
+Angle = 0, Scale = 1
+Extracting template. L = 0
+Have no enough features, exaustive mode
+Number of features: 116
+Extracting template. L = 1
+Have no enough features, exaustive mode
+Number of features: 58
+Angle = 1, Scale = 1
+Computed from reference features.
+Angle = -1, Scale = 1
+Computed from reference features.
+Angle = 2, Scale = 1
+Computed from reference features.
+Angle = -2, Scale = 1
+Computed from reference features.
+Angle = 3, Scale = 1
+Computed from reference features.
+Angle = -3, Scale = 1
+Computed from reference features.
+Angle = 4, Scale = 1
+Computed from reference features.
+Angle = -4, Scale = 1
+Computed from reference features.
+Angle = 5, Scale = 1
+Computed from reference features.
+Angle = -5, Scale = 1
+Computed from reference features.
+Angle = 6, Scale = 1
+Computed from reference features.
+Angle = -6, Scale = 1
+Computed from reference features.
+Angle = -7, Scale = 1
+Computed from reference features.
+Angle = 7, Scale = 1
+Computed from reference features.
+Angle = -8, Scale = 1
+Computed from reference features.
+Angle = 8, Scale = 1
+Computed from reference features.
+Angle = 9, Scale = 1
+Computed from reference features.
+Angle = -9, Scale = 1
+Computed from reference features.
+Angle = 10, Scale = 1
+Computed from reference features.
+Angle = -10, Scale = 1
+Computed from reference features.
+Angle = -11, Scale = 1
+Computed from reference features.
+Angle = 11, Scale = 1
+Computed from reference features.
+Angle = -12, Scale = 1
+Computed from reference features.
+Angle = 12, Scale = 1
+Computed from reference features.
+Angle = -13, Scale = 1
+Computed from reference features.
+Angle = 13, Scale = 1
+Computed from reference features.
+Angle = -14, Scale = 1
+Computed from reference features.
+Angle = 14, Scale = 1
+Computed from reference features.
+Angle = -15, Scale = 1
+Computed from reference features.
+Angle = 15, Scale = 1
+Computed from reference features.
+Angle = -16, Scale = 1
+Computed from reference features.
+Angle = 16, Scale = 1
+Computed from reference features.
+Angle = -17, Scale = 1
+Computed from reference features.
+Angle = 17, Scale = 1
+Computed from reference features.
+Angle = -18, Scale = 1
+Computed from reference features.
+Angle = 18, Scale = 1
+Computed from reference features.
+Angle = 19, Scale = 1
+Computed from reference features.
+Angle = -19, Scale = 1
+Computed from reference features.
+Angle = -20, Scale = 1
+Computed from reference features.
+Angle = 20, Scale = 1
+Computed from reference features.
+Angle = 21, Scale = 1
+Computed from reference features.
+Angle = -21, Scale = 1
+Computed from reference features.
+Angle = 22, Scale = 1
+Computed from reference features.
+Angle = -22, Scale = 1
+Computed from reference features.
+Angle = 23, Scale = 1
+Computed from reference features.
+Angle = -23, Scale = 1
+Computed from reference features.
+Angle = 24, Scale = 1
+Computed from reference features.
+Angle = -24, Scale = 1
+Computed from reference features.
+Angle = 25, Scale = 1
+Computed from reference features.
+Angle = -25, Scale = 1
+Computed from reference features.
+Angle = 26, Scale = 1
+Computed from reference features.
+Angle = -26, Scale = 1
+Computed from reference features.
+Angle = -27, Scale = 1
+Computed from reference features.
+Angle = 27, Scale = 1
+Computed from reference features.
+Angle = -28, Scale = 1
+Computed from reference features.
+Angle = 28, Scale = 1
+Computed from reference features.
+Angle = -29, Scale = 1
+Computed from reference features.
+Angle = 29, Scale = 1
+Computed from reference features.
+Angle = -30, Scale = 1
+Computed from reference features.
+Angle = 30, Scale = 1
+Computed from reference features.
+Angle = -31, Scale = 1
+Computed from reference features.
+Angle = 31, Scale = 1
+Computed from reference features.
+Angle = -32, Scale = 1
+Computed from reference features.
+Angle = 32, Scale = 1
+Computed from reference features.
+Angle = -33, Scale = 1
+Computed from reference features.
+Angle = 33, Scale = 1
+Computed from reference features.
+Angle = 34, Scale = 1
+Computed from reference features.
+Angle = -34, Scale = 1
+Computed from reference features.
+Angle = 35, Scale = 1
+Computed from reference features.
+Angle = -35, Scale = 1
+Computed from reference features.
+Angle = 36, Scale = 1
+Computed from reference features.
+Angle = -36, Scale = 1
+Computed from reference features.
+Angle = -37, Scale = 1
+Computed from reference features.
+Angle = 37, Scale = 1
+Computed from reference features.
+Angle = 38, Scale = 1
+Computed from reference features.
+Angle = -38, Scale = 1
+Computed from reference features.
+Angle = -39, Scale = 1
+Computed from reference features.
+Angle = 39, Scale = 1
+Computed from reference features.
+Angle = -40, Scale = 1
+Computed from reference features.
+Angle = 40, Scale = 1
+Computed from reference features.
+Angle = -41, Scale = 1
+Computed from reference features.
+Angle = 41, Scale = 1
+Computed from reference features.
+Angle = 42, Scale = 1
+Computed from reference features.
+Angle = -42, Scale = 1
+Computed from reference features.
+Angle = 43, Scale = 1
+Computed from reference features.
+Angle = -43, Scale = 1
+Computed from reference features.
+Angle = -44, Scale = 1
+Computed from reference features.
+Angle = 44, Scale = 1
+Computed from reference features.
+Angle = 45, Scale = 1
+Computed from reference features.
+Angle = -45, Scale = 1
+Computed from reference features.
+Angle = 46, Scale = 1
+Computed from reference features.
+Angle = -46, Scale = 1
+Computed from reference features.
+Angle = -47, Scale = 1
+Computed from reference features.
+Angle = 47, Scale = 1
+Computed from reference features.
+Angle = -48, Scale = 1
+Computed from reference features.
+Angle = 48, Scale = 1
+Computed from reference features.
+Angle = -49, Scale = 1
+Computed from reference features.
+Angle = 49, Scale = 1
+Computed from reference features.
+Angle = -50, Scale = 1
+Computed from reference features.
+Angle = 50, Scale = 1
+Computed from reference features.
+Angle = -51, Scale = 1
+Computed from reference features.
+Angle = 51, Scale = 1
+Computed from reference features.
+Angle = -52, Scale = 1
+Computed from reference features.
+Angle = 52, Scale = 1
+Computed from reference features.
+Angle = -53, Scale = 1
+Computed from reference features.
+Angle = 53, Scale = 1
+Computed from reference features.
+Angle = 54, Scale = 1
+Computed from reference features.
+Angle = -54, Scale = 1
+Computed from reference features.
+Angle = 55, Scale = 1
+Computed from reference features.
+Angle = -55, Scale = 1
+Computed from reference features.
+Angle = 56, Scale = 1
+Computed from reference features.
+Angle = -56, Scale = 1
+Computed from reference features.
+Angle = 57, Scale = 1
+Computed from reference features.
+Angle = -57, Scale = 1
+Computed from reference features.
+Angle = -58, Scale = 1
+Computed from reference features.
+Angle = 58, Scale = 1
+Computed from reference features.
+Angle = 59, Scale = 1
+Computed from reference features.
+Angle = -59, Scale = 1
+Computed from reference features.
+Angle = -60, Scale = 1
+Computed from reference features.
+Angle = 60, Scale = 1
+Computed from reference features.
+Angle = -61, Scale = 1
+Computed from reference features.
+Angle = 61, Scale = 1
+Computed from reference features.
+Angle = -62, Scale = 1
+Computed from reference features.
+Angle = 62, Scale = 1
+Computed from reference features.
+Angle = -63, Scale = 1
+Computed from reference features.
+Angle = 63, Scale = 1
+Computed from reference features.
+Angle = -64, Scale = 1
+Computed from reference features.
+Angle = 64, Scale = 1
+Computed from reference features.
+Angle = -65, Scale = 1
+Computed from reference features.
+Angle = 65, Scale = 1
+Computed from reference features.
+Angle = 66, Scale = 1
+Computed from reference features.
+Angle = -66, Scale = 1
+Computed from reference features.
+Angle = 67, Scale = 1
+Computed from reference features.
+Angle = -67, Scale = 1
+Computed from reference features.
+Angle = 68, Scale = 1
+Computed from reference features.
+Angle = -68, Scale = 1
+Computed from reference features.
+Angle = 69, Scale = 1
+Computed from reference features.
+Angle = -69, Scale = 1
+Computed from reference features.
+Angle = 70, Scale = 1
+Computed from reference features.
+Angle = -70, Scale = 1
+Computed from reference features.
+Angle = -71, Scale = 1
+Computed from reference features.
+Angle = 71, Scale = 1
+Computed from reference features.
+Angle = -72, Scale = 1
+Computed from reference features.
+Angle = 72, Scale = 1
+Computed from reference features.
+Angle = -73, Scale = 1
+Computed from reference features.
+Angle = 73, Scale = 1
+Computed from reference features.
+Angle = -74, Scale = 1
+Computed from reference features.
+Angle = 74, Scale = 1
+Computed from reference features.
+Angle = -75, Scale = 1
+Computed from reference features.
+Angle = 75, Scale = 1
+Computed from reference features.
+Angle = -76, Scale = 1
+Computed from reference features.
+Angle = 76, Scale = 1
+Computed from reference features.
+Angle = -77, Scale = 1
+Computed from reference features.
+Angle = 77, Scale = 1
+Computed from reference features.
+Angle = 78, Scale = 1
+Computed from reference features.
+Angle = -78, Scale = 1
+Computed from reference features.
+Angle = 79, Scale = 1
+Computed from reference features.
+Angle = -79, Scale = 1
+Computed from reference features.
+Angle = 80, Scale = 1
+Computed from reference features.
+Angle = -80, Scale = 1
+Computed from reference features.
+Angle = 81, Scale = 1
+Computed from reference features.
+Angle = -81, Scale = 1
+Computed from reference features.
+Angle = 82, Scale = 1
+Computed from reference features.
+Angle = -82, Scale = 1
+Computed from reference features.
+Angle = -83, Scale = 1
+Computed from reference features.
+Angle = 83, Scale = 1
+Computed from reference features.
+Angle = -84, Scale = 1
+Computed from reference features.
+Angle = 84, Scale = 1
+Computed from reference features.
+Angle = 85, Scale = 1
+Computed from reference features.
+Angle = -85, Scale = 1
+Computed from reference features.
+Angle = -86, Scale = 1
+Computed from reference features.
+Angle = 86, Scale = 1
+Computed from reference features.
+Angle = 87, Scale = 1
+Computed from reference features.
+Angle = -87, Scale = 1
+Computed from reference features.
+Angle = -88, Scale = 1
+Computed from reference features.
+Angle = 88, Scale = 1
+Computed from reference features.
+Angle = -89, Scale = 1
+Computed from reference features.
+Angle = 89, Scale = 1
+Computed from reference features.
+Angle = 90, Scale = 1
+Computed from reference features.
+Angle = -90, Scale = 1
+Computed from reference features.
+Angle = 91, Scale = 1
+Computed from reference features.
+Angle = -91, Scale = 1
+Computed from reference features.
+Angle = 92, Scale = 1
+Computed from reference features.
+Angle = -92, Scale = 1
+Computed from reference features.
+Angle = 93, Scale = 1
+Computed from reference features.
+Angle = -93, Scale = 1
+Computed from reference features.
+Angle = -94, Scale = 1
+Computed from reference features.
+Angle = 94, Scale = 1
+Computed from reference features.
+Angle = -95, Scale = 1
+Computed from reference features.
+Angle = 95, Scale = 1
+Computed from reference features.
+Angle = -96, Scale = 1
+Computed from reference features.
+Angle = 96, Scale = 1
+Computed from reference features.
+Angle = -97, Scale = 1
+Computed from reference features.
+Angle = 97, Scale = 1
+Computed from reference features.
+Angle = -98, Scale = 1
+Computed from reference features.
+Angle = 98, Scale = 1
+Computed from reference features.
+Angle = -99, Scale = 1
+Computed from reference features.
+Angle = 99, Scale = 1
+Computed from reference features.
+Angle = 100, Scale = 1
+Computed from reference features.
+Angle = -100, Scale = 1
+Computed from reference features.
+Angle = 101, Scale = 1
+Computed from reference features.
+Angle = -101, Scale = 1
+Computed from reference features.
+Angle = 102, Scale = 1
+Computed from reference features.
+Angle = -102, Scale = 1
+Computed from reference features.
+Angle = 103, Scale = 1
+Computed from reference features.
+Angle = -103, Scale = 1
+Computed from reference features.
+Angle = 104, Scale = 1
+Computed from reference features.
+Angle = -104, Scale = 1
+Computed from reference features.
+Angle = -105, Scale = 1
+Computed from reference features.
+Angle = 105, Scale = 1
+Computed from reference features.
+Angle = 106, Scale = 1
+Computed from reference features.
+Angle = -106, Scale = 1
+Computed from reference features.
+Angle = 107, Scale = 1
+Computed from reference features.
+Angle = -107, Scale = 1
+Computed from reference features.
+Angle = 108, Scale = 1
+Computed from reference features.
+Angle = -108, Scale = 1
+Computed from reference features.
+Angle = 109, Scale = 1
+Computed from reference features.
+Angle = -109, Scale = 1
+Computed from reference features.
+Angle = -110, Scale = 1
+Computed from reference features.
+Angle = 110, Scale = 1
+Computed from reference features.
+Angle = 111, Scale = 1
+Computed from reference features.
+Angle = -111, Scale = 1
+Computed from reference features.
+Angle = -112, Scale = 1
+Computed from reference features.
+Angle = 112, Scale = 1
+Computed from reference features.
+Angle = 113, Scale = 1
+Computed from reference features.
+Angle = -113, Scale = 1
+Computed from reference features.
+Angle = 114, Scale = 1
+Computed from reference features.
+Angle = -114, Scale = 1
+Computed from reference features.
+Angle = -115, Scale = 1
+Computed from reference features.
+Angle = 115, Scale = 1
+Computed from reference features.
+Angle = -116, Scale = 1
+Computed from reference features.
+Angle = 116, Scale = 1
+Computed from reference features.
+Angle = -117, Scale = 1
+Computed from reference features.
+Angle = 117, Scale = 1
+Computed from reference features.
+Angle = 118, Scale = 1
+Computed from reference features.
+Angle = -118, Scale = 1
+Computed from reference features.
+Angle = -119, Scale = 1
+Computed from reference features.
+Angle = 119, Scale = 1
+Computed from reference features.
+Angle = -120, Scale = 1
+Computed from reference features.
+Angle = 120, Scale = 1
+Computed from reference features.
+Angle = 121, Scale = 1
+Computed from reference features.
+Angle = -121, Scale = 1
+Computed from reference features.
+Angle = -122, Scale = 1
+Computed from reference features.
+Angle = 122, Scale = 1
+Computed from reference features.
+Angle = -123, Scale = 1
+Computed from reference features.
+Angle = 123, Scale = 1
+Computed from reference features.
+Angle = -124, Scale = 1
+Computed from reference features.
+Angle = 124, Scale = 1
+Computed from reference features.
+Angle = -125, Scale = 1
+Computed from reference features.
+Angle = 125, Scale = 1
+Computed from reference features.
+Angle = -126, Scale = 1
+Computed from reference features.
+Angle = 126, Scale = 1
+Computed from reference features.
+Angle = 127, Scale = 1
+Computed from reference features.
+Angle = -127, Scale = 1
+Computed from reference features.
+Angle = -128, Scale = 1
+Computed from reference features.
+Angle = 128, Scale = 1
+Computed from reference features.
+Angle = -129, Scale = 1
+Computed from reference features.
+Angle = 129, Scale = 1
+Computed from reference features.
+Angle = 130, Scale = 1
+Computed from reference features.
+Angle = -130, Scale = 1
+Computed from reference features.
+Angle = 131, Scale = 1
+Computed from reference features.
+Angle = -131, Scale = 1
+Computed from reference features.
+Angle = -132, Scale = 1
+Computed from reference features.
+Angle = 132, Scale = 1
+Computed from reference features.
+Angle = 133, Scale = 1
+Computed from reference features.
+Angle = -133, Scale = 1
+Computed from reference features.
+Angle = -134, Scale = 1
+Computed from reference features.
+Angle = 134, Scale = 1
+Computed from reference features.
+Angle = 135, Scale = 1
+Computed from reference features.
+Angle = -135, Scale = 1
+Computed from reference features.
+Angle = -136, Scale = 1
+Computed from reference features.
+Angle = 136, Scale = 1
+Computed from reference features.
+Angle = -137, Scale = 1
+Computed from reference features.
+Angle = 137, Scale = 1
+Computed from reference features.
+Angle = 138, Scale = 1
+Computed from reference features.
+Angle = -138, Scale = 1
+Computed from reference features.
+Angle = 139, Scale = 1
+Computed from reference features.
+Angle = -139, Scale = 1
+Computed from reference features.
+Angle = 140, Scale = 1
+Computed from reference features.
+Angle = -140, Scale = 1
+Computed from reference features.
+Angle = 141, Scale = 1
+Computed from reference features.
+Angle = -141, Scale = 1
+Computed from reference features.
+Angle = -142, Scale = 1
+Computed from reference features.
+Angle = 142, Scale = 1
+Computed from reference features.
+Angle = -143, Scale = 1
+Computed from reference features.
+Angle = 143, Scale = 1
+Computed from reference features.
+Angle = -144, Scale = 1
+Computed from reference features.
+Angle = 144, Scale = 1
+Computed from reference features.
+Angle = -145, Scale = 1
+Computed from reference features.
+Angle = 145, Scale = 1
+Computed from reference features.
+Angle = 146, Scale = 1
+Computed from reference features.
+Angle = -146, Scale = 1
+Computed from reference features.
+Angle = 147, Scale = 1
+Computed from reference features.
+Angle = -147, Scale = 1
+Computed from reference features.
+Angle = 148, Scale = 1
+Computed from reference features.
+Angle = -148, Scale = 1
+Computed from reference features.
+Angle = 149, Scale = 1
+Computed from reference features.
+Angle = -149, Scale = 1
+Computed from reference features.
+Angle = 150, Scale = 1
+Computed from reference features.
+Angle = -150, Scale = 1
+Computed from reference features.
+Angle = 151, Scale = 1
+Computed from reference features.
+Angle = -151, Scale = 1
+Computed from reference features.
+Angle = -152, Scale = 1
+Computed from reference features.
+Angle = 152, Scale = 1
+Computed from reference features.
+Angle = -153, Scale = 1
+Computed from reference features.
+Angle = 153, Scale = 1
+Computed from reference features.
+Angle = 154, Scale = 1
+Computed from reference features.
+Angle = -154, Scale = 1
+Computed from reference features.
+Angle = 155, Scale = 1
+Computed from reference features.
+Angle = -155, Scale = 1
+Computed from reference features.
+Angle = -156, Scale = 1
+Computed from reference features.
+Angle = 156, Scale = 1
+Computed from reference features.
+Angle = 157, Scale = 1
+Computed from reference features.
+Angle = -157, Scale = 1
+Computed from reference features.
+Angle = -158, Scale = 1
+Computed from reference features.
+Angle = 158, Scale = 1
+Computed from reference features.
+Angle = 159, Scale = 1
+Computed from reference features.
+Angle = -159, Scale = 1
+Computed from reference features.
+Angle = -160, Scale = 1
+Computed from reference features.
+Angle = 160, Scale = 1
+Computed from reference features.
+Angle = -161, Scale = 1
+Computed from reference features.
+Angle = 161, Scale = 1
+Computed from reference features.
+Angle = -162, Scale = 1
+Computed from reference features.
+Angle = 162, Scale = 1
+Computed from reference features.
+Angle = -163, Scale = 1
+Computed from reference features.
+Angle = 163, Scale = 1
+Computed from reference features.
+Angle = -164, Scale = 1
+Computed from reference features.
+Angle = 164, Scale = 1
+Computed from reference features.
+Angle = -165, Scale = 1
+Computed from reference features.
+Angle = 165, Scale = 1
+Computed from reference features.
+Angle = -166, Scale = 1
+Computed from reference features.
+Angle = 166, Scale = 1
+Computed from reference features.
+Angle = -167, Scale = 1
+Computed from reference features.
+Angle = 167, Scale = 1
+Computed from reference features.
+Angle = -168, Scale = 1
+Computed from reference features.
+Angle = 168, Scale = 1
+Computed from reference features.
+Angle = 169, Scale = 1
+Computed from reference features.
+Angle = -169, Scale = 1
+Computed from reference features.
+Angle = -170, Scale = 1
+Computed from reference features.
+Angle = 170, Scale = 1
+Computed from reference features.
+Angle = -171, Scale = 1
+Computed from reference features.
+Angle = 171, Scale = 1
+Computed from reference features.
+Angle = -172, Scale = 1
+Computed from reference features.
+Angle = 172, Scale = 1
+Computed from reference features.
+Angle = -173, Scale = 1
+Computed from reference features.
+Angle = 173, Scale = 1
+Computed from reference features.
+Angle = -174, Scale = 1
+Computed from reference features.
+Angle = 174, Scale = 1
+Computed from reference features.
+Angle = 175, Scale = 1
+Computed from reference features.
+Angle = -175, Scale = 1
+Computed from reference features.
+Angle = -176, Scale = 1
+Computed from reference features.
+Angle = 176, Scale = 1
+Computed from reference features.
+Angle = -177, Scale = 1
+Computed from reference features.
+Angle = 177, Scale = 1
+Computed from reference features.
+Angle = 178, Scale = 1
+Computed from reference features.
+Angle = -178, Scale = 1
+Computed from reference features.
+Angle = 179, Scale = 1
+Computed from reference features.
+Angle = -179, Scale = 1
+Computed from reference features.
+Angle = -180, Scale = 1
+Computed from reference features.
+Angle = 180, Scale = 1
+Computed from reference features.
+Angle = 0, Scale = 1.1
+Extracting template. L = 0
+Have no enough features, exaustive mode
+Number of features: 123
+Extracting template. L = 1
+Have no enough features, exaustive mode
+Number of features: 66
+Angle = 1, Scale = 1.1
+Computed from reference features.
+Angle = -1, Scale = 1.1
+Computed from reference features.
+Angle = 2, Scale = 1.1
+Computed from reference features.
+Angle = -2, Scale = 1.1
+Computed from reference features.
+Angle = 3, Scale = 1.1
+Computed from reference features.
+Angle = -3, Scale = 1.1
+Computed from reference features.
+Angle = 4, Scale = 1.1
+Computed from reference features.
+Angle = -4, Scale = 1.1
+Computed from reference features.
+Angle = 5, Scale = 1.1
+Computed from reference features.
+Angle = -5, Scale = 1.1
+Computed from reference features.
+Angle = 6, Scale = 1.1
+Computed from reference features.
+Angle = -6, Scale = 1.1
+Computed from reference features.
+Angle = -7, Scale = 1.1
+Computed from reference features.
+Angle = 7, Scale = 1.1
+Computed from reference features.
+Angle = -8, Scale = 1.1
+Computed from reference features.
+Angle = 8, Scale = 1.1
+Computed from reference features.
+Angle = 9, Scale = 1.1
+Computed from reference features.
+Angle = -9, Scale = 1.1
+Computed from reference features.
+Angle = 10, Scale = 1.1
+Computed from reference features.
+Angle = -10, Scale = 1.1
+Computed from reference features.
+Angle = -11, Scale = 1.1
+Computed from reference features.
+Angle = 11, Scale = 1.1
+Computed from reference features.
+Angle = -12, Scale = 1.1
+Computed from reference features.
+Angle = 12, Scale = 1.1
+Computed from reference features.
+Angle = -13, Scale = 1.1
+Computed from reference features.
+Angle = 13, Scale = 1.1
+Computed from reference features.
+Angle = -14, Scale = 1.1
+Computed from reference features.
+Angle = 14, Scale = 1.1
+Computed from reference features.
+Angle = -15, Scale = 1.1
+Computed from reference features.
+Angle = 15, Scale = 1.1
+Computed from reference features.
+Angle = -16, Scale = 1.1
+Computed from reference features.
+Angle = 16, Scale = 1.1
+Computed from reference features.
+Angle = -17, Scale = 1.1
+Computed from reference features.
+Angle = 17, Scale = 1.1
+Computed from reference features.
+Angle = -18, Scale = 1.1
+Computed from reference features.
+Angle = 18, Scale = 1.1
+Computed from reference features.
+Angle = 19, Scale = 1.1
+Computed from reference features.
+Angle = -19, Scale = 1.1
+Computed from reference features.
+Angle = -20, Scale = 1.1
+Computed from reference features.
+Angle = 20, Scale = 1.1
+Computed from reference features.
+Angle = 21, Scale = 1.1
+Computed from reference features.
+Angle = -21, Scale = 1.1
+Computed from reference features.
+Angle = 22, Scale = 1.1
+Computed from reference features.
+Angle = -22, Scale = 1.1
+Computed from reference features.
+Angle = 23, Scale = 1.1
+Computed from reference features.
+Angle = -23, Scale = 1.1
+Computed from reference features.
+Angle = 24, Scale = 1.1
+Computed from reference features.
+Angle = -24, Scale = 1.1
+Computed from reference features.
+Angle = 25, Scale = 1.1
+Computed from reference features.
+Angle = -25, Scale = 1.1
+Computed from reference features.
+Angle = 26, Scale = 1.1
+Computed from reference features.
+Angle = -26, Scale = 1.1
+Computed from reference features.
+Angle = -27, Scale = 1.1
+Computed from reference features.
+Angle = 27, Scale = 1.1
+Computed from reference features.
+Angle = -28, Scale = 1.1
+Computed from reference features.
+Angle = 28, Scale = 1.1
+Computed from reference features.
+Angle = -29, Scale = 1.1
+Computed from reference features.
+Angle = 29, Scale = 1.1
+Computed from reference features.
+Angle = -30, Scale = 1.1
+Computed from reference features.
+Angle = 30, Scale = 1.1
+Computed from reference features.
+Angle = -31, Scale = 1.1
+Computed from reference features.
+Angle = 31, Scale = 1.1
+Computed from reference features.
+Angle = -32, Scale = 1.1
+Computed from reference features.
+Angle = 32, Scale = 1.1
+Computed from reference features.
+Angle = -33, Scale = 1.1
+Computed from reference features.
+Angle = 33, Scale = 1.1
+Computed from reference features.
+Angle = 34, Scale = 1.1
+Computed from reference features.
+Angle = -34, Scale = 1.1
+Computed from reference features.
+Angle = 35, Scale = 1.1
+Computed from reference features.
+Angle = -35, Scale = 1.1
+Computed from reference features.
+Angle = 36, Scale = 1.1
+Computed from reference features.
+Angle = -36, Scale = 1.1
+Computed from reference features.
+Angle = -37, Scale = 1.1
+Computed from reference features.
+Angle = 37, Scale = 1.1
+Computed from reference features.
+Angle = 38, Scale = 1.1
+Computed from reference features.
+Angle = -38, Scale = 1.1
+Computed from reference features.
+Angle = -39, Scale = 1.1
+Computed from reference features.
+Angle = 39, Scale = 1.1
+Computed from reference features.
+Angle = -40, Scale = 1.1
+Computed from reference features.
+Angle = 40, Scale = 1.1
+Computed from reference features.
+Angle = -41, Scale = 1.1
+Computed from reference features.
+Angle = 41, Scale = 1.1
+Computed from reference features.
+Angle = 42, Scale = 1.1
+Computed from reference features.
+Angle = -42, Scale = 1.1
+Computed from reference features.
+Angle = 43, Scale = 1.1
+Computed from reference features.
+Angle = -43, Scale = 1.1
+Computed from reference features.
+Angle = -44, Scale = 1.1
+Computed from reference features.
+Angle = 44, Scale = 1.1
+Computed from reference features.
+Angle = 45, Scale = 1.1
+Computed from reference features.
+Angle = -45, Scale = 1.1
+Computed from reference features.
+Angle = 46, Scale = 1.1
+Computed from reference features.
+Angle = -46, Scale = 1.1
+Computed from reference features.
+Angle = -47, Scale = 1.1
+Computed from reference features.
+Angle = 47, Scale = 1.1
+Computed from reference features.
+Angle = -48, Scale = 1.1
+Computed from reference features.
+Angle = 48, Scale = 1.1
+Computed from reference features.
+Angle = -49, Scale = 1.1
+Computed from reference features.
+Angle = 49, Scale = 1.1
+Computed from reference features.
+Angle = -50, Scale = 1.1
+Computed from reference features.
+Angle = 50, Scale = 1.1
+Computed from reference features.
+Angle = -51, Scale = 1.1
+Computed from reference features.
+Angle = 51, Scale = 1.1
+Computed from reference features.
+Angle = -52, Scale = 1.1
+Computed from reference features.
+Angle = 52, Scale = 1.1
+Computed from reference features.
+Angle = -53, Scale = 1.1
+Computed from reference features.
+Angle = 53, Scale = 1.1
+Computed from reference features.
+Angle = 54, Scale = 1.1
+Computed from reference features.
+Angle = -54, Scale = 1.1
+Computed from reference features.
+Angle = 55, Scale = 1.1
+Computed from reference features.
+Angle = -55, Scale = 1.1
+Computed from reference features.
+Angle = 56, Scale = 1.1
+Computed from reference features.
+Angle = -56, Scale = 1.1
+Computed from reference features.
+Angle = 57, Scale = 1.1
+Computed from reference features.
+Angle = -57, Scale = 1.1
+Computed from reference features.
+Angle = -58, Scale = 1.1
+Computed from reference features.
+Angle = 58, Scale = 1.1
+Computed from reference features.
+Angle = 59, Scale = 1.1
+Computed from reference features.
+Angle = -59, Scale = 1.1
+Computed from reference features.
+Angle = -60, Scale = 1.1
+Computed from reference features.
+Angle = 60, Scale = 1.1
+Computed from reference features.
+Angle = -61, Scale = 1.1
+Computed from reference features.
+Angle = 61, Scale = 1.1
+Computed from reference features.
+Angle = -62, Scale = 1.1
+Computed from reference features.
+Angle = 62, Scale = 1.1
+Computed from reference features.
+Angle = -63, Scale = 1.1
+Computed from reference features.
+Angle = 63, Scale = 1.1
+Computed from reference features.
+Angle = -64, Scale = 1.1
+Computed from reference features.
+Angle = 64, Scale = 1.1
+Computed from reference features.
+Angle = -65, Scale = 1.1
+Computed from reference features.
+Angle = 65, Scale = 1.1
+Computed from reference features.
+Angle = 66, Scale = 1.1
+Computed from reference features.
+Angle = -66, Scale = 1.1
+Computed from reference features.
+Angle = 67, Scale = 1.1
+Computed from reference features.
+Angle = -67, Scale = 1.1
+Computed from reference features.
+Angle = 68, Scale = 1.1
+Computed from reference features.
+Angle = -68, Scale = 1.1
+Computed from reference features.
+Angle = 69, Scale = 1.1
+Computed from reference features.
+Angle = -69, Scale = 1.1
+Computed from reference features.
+Angle = 70, Scale = 1.1
+Computed from reference features.
+Angle = -70, Scale = 1.1
+Computed from reference features.
+Angle = -71, Scale = 1.1
+Computed from reference features.
+Angle = 71, Scale = 1.1
+Computed from reference features.
+Angle = -72, Scale = 1.1
+Computed from reference features.
+Angle = 72, Scale = 1.1
+Computed from reference features.
+Angle = -73, Scale = 1.1
+Computed from reference features.
+Angle = 73, Scale = 1.1
+Computed from reference features.
+Angle = -74, Scale = 1.1
+Computed from reference features.
+Angle = 74, Scale = 1.1
+Computed from reference features.
+Angle = -75, Scale = 1.1
+Computed from reference features.
+Angle = 75, Scale = 1.1
+Computed from reference features.
+Angle = -76, Scale = 1.1
+Computed from reference features.
+Angle = 76, Scale = 1.1
+Computed from reference features.
+Angle = -77, Scale = 1.1
+Computed from reference features.
+Angle = 77, Scale = 1.1
+Computed from reference features.
+Angle = 78, Scale = 1.1
+Computed from reference features.
+Angle = -78, Scale = 1.1
+Computed from reference features.
+Angle = 79, Scale = 1.1
+Computed from reference features.
+Angle = -79, Scale = 1.1
+Computed from reference features.
+Angle = 80, Scale = 1.1
+Computed from reference features.
+Angle = -80, Scale = 1.1
+Computed from reference features.
+Angle = 81, Scale = 1.1
+Computed from reference features.
+Angle = -81, Scale = 1.1
+Computed from reference features.
+Angle = 82, Scale = 1.1
+Computed from reference features.
+Angle = -82, Scale = 1.1
+Computed from reference features.
+Angle = -83, Scale = 1.1
+Computed from reference features.
+Angle = 83, Scale = 1.1
+Computed from reference features.
+Angle = -84, Scale = 1.1
+Computed from reference features.
+Angle = 84, Scale = 1.1
+Computed from reference features.
+Angle = 85, Scale = 1.1
+Computed from reference features.
+Angle = -85, Scale = 1.1
+Computed from reference features.
+Angle = -86, Scale = 1.1
+Computed from reference features.
+Angle = 86, Scale = 1.1
+Computed from reference features.
+Angle = 87, Scale = 1.1
+Computed from reference features.
+Angle = -87, Scale = 1.1
+Computed from reference features.
+Angle = -88, Scale = 1.1
+Computed from reference features.
+Angle = 88, Scale = 1.1
+Computed from reference features.
+Angle = -89, Scale = 1.1
+Computed from reference features.
+Angle = 89, Scale = 1.1
+Computed from reference features.
+Angle = 90, Scale = 1.1
+Computed from reference features.
+Angle = -90, Scale = 1.1
+Computed from reference features.
+Angle = 91, Scale = 1.1
+Computed from reference features.
+Angle = -91, Scale = 1.1
+Computed from reference features.
+Angle = 92, Scale = 1.1
+Computed from reference features.
+Angle = -92, Scale = 1.1
+Computed from reference features.
+Angle = 93, Scale = 1.1
+Computed from reference features.
+Angle = -93, Scale = 1.1
+Computed from reference features.
+Angle = -94, Scale = 1.1
+Computed from reference features.
+Angle = 94, Scale = 1.1
+Computed from reference features.
+Angle = -95, Scale = 1.1
+Computed from reference features.
+Angle = 95, Scale = 1.1
+Computed from reference features.
+Angle = -96, Scale = 1.1
+Computed from reference features.
+Angle = 96, Scale = 1.1
+Computed from reference features.
+Angle = -97, Scale = 1.1
+Computed from reference features.
+Angle = 97, Scale = 1.1
+Computed from reference features.
+Angle = -98, Scale = 1.1
+Computed from reference features.
+Angle = 98, Scale = 1.1
+Computed from reference features.
+Angle = -99, Scale = 1.1
+Computed from reference features.
+Angle = 99, Scale = 1.1
+Computed from reference features.
+Angle = 100, Scale = 1.1
+Computed from reference features.
+Angle = -100, Scale = 1.1
+Computed from reference features.
+Angle = 101, Scale = 1.1
+Computed from reference features.
+Angle = -101, Scale = 1.1
+Computed from reference features.
+Angle = 102, Scale = 1.1
+Computed from reference features.
+Angle = -102, Scale = 1.1
+Computed from reference features.
+Angle = 103, Scale = 1.1
+Computed from reference features.
+Angle = -103, Scale = 1.1
+Computed from reference features.
+Angle = 104, Scale = 1.1
+Computed from reference features.
+Angle = -104, Scale = 1.1
+Computed from reference features.
+Angle = -105, Scale = 1.1
+Computed from reference features.
+Angle = 105, Scale = 1.1
+Computed from reference features.
+Angle = 106, Scale = 1.1
+Computed from reference features.
+Angle = -106, Scale = 1.1
+Computed from reference features.
+Angle = 107, Scale = 1.1
+Computed from reference features.
+Angle = -107, Scale = 1.1
+Computed from reference features.
+Angle = 108, Scale = 1.1
+Computed from reference features.
+Angle = -108, Scale = 1.1
+Computed from reference features.
+Angle = 109, Scale = 1.1
+Computed from reference features.
+Angle = -109, Scale = 1.1
+Computed from reference features.
+Angle = -110, Scale = 1.1
+Computed from reference features.
+Angle = 110, Scale = 1.1
+Computed from reference features.
+Angle = 111, Scale = 1.1
+Computed from reference features.
+Angle = -111, Scale = 1.1
+Computed from reference features.
+Angle = -112, Scale = 1.1
+Computed from reference features.
+Angle = 112, Scale = 1.1
+Computed from reference features.
+Angle = 113, Scale = 1.1
+Computed from reference features.
+Angle = -113, Scale = 1.1
+Computed from reference features.
+Angle = 114, Scale = 1.1
+Computed from reference features.
+Angle = -114, Scale = 1.1
+Computed from reference features.
+Angle = -115, Scale = 1.1
+Computed from reference features.
+Angle = 115, Scale = 1.1
+Computed from reference features.
+Angle = -116, Scale = 1.1
+Computed from reference features.
+Angle = 116, Scale = 1.1
+Computed from reference features.
+Angle = -117, Scale = 1.1
+Computed from reference features.
+Angle = 117, Scale = 1.1
+Computed from reference features.
+Angle = 118, Scale = 1.1
+Computed from reference features.
+Angle = -118, Scale = 1.1
+Computed from reference features.
+Angle = -119, Scale = 1.1
+Computed from reference features.
+Angle = 119, Scale = 1.1
+Computed from reference features.
+Angle = -120, Scale = 1.1
+Computed from reference features.
+Angle = 120, Scale = 1.1
+Computed from reference features.
+Angle = 121, Scale = 1.1
+Computed from reference features.
+Angle = -121, Scale = 1.1
+Computed from reference features.
+Angle = -122, Scale = 1.1
+Computed from reference features.
+Angle = 122, Scale = 1.1
+Computed from reference features.
+Angle = -123, Scale = 1.1
+Computed from reference features.
+Angle = 123, Scale = 1.1
+Computed from reference features.
+Angle = -124, Scale = 1.1
+Computed from reference features.
+Angle = 124, Scale = 1.1
+Computed from reference features.
+Angle = -125, Scale = 1.1
+Computed from reference features.
+Angle = 125, Scale = 1.1
+Computed from reference features.
+Angle = -126, Scale = 1.1
+Computed from reference features.
+Angle = 126, Scale = 1.1
+Computed from reference features.
+Angle = 127, Scale = 1.1
+Computed from reference features.
+Angle = -127, Scale = 1.1
+Computed from reference features.
+Angle = -128, Scale = 1.1
+Computed from reference features.
+Angle = 128, Scale = 1.1
+Computed from reference features.
+Angle = -129, Scale = 1.1
+Computed from reference features.
+Angle = 129, Scale = 1.1
+Computed from reference features.
+Angle = 130, Scale = 1.1
+Computed from reference features.
+Angle = -130, Scale = 1.1
+Computed from reference features.
+Angle = 131, Scale = 1.1
+Computed from reference features.
+Angle = -131, Scale = 1.1
+Computed from reference features.
+Angle = -132, Scale = 1.1
+Computed from reference features.
+Angle = 132, Scale = 1.1
+Computed from reference features.
+Angle = 133, Scale = 1.1
+Computed from reference features.
+Angle = -133, Scale = 1.1
+Computed from reference features.
+Angle = -134, Scale = 1.1
+Computed from reference features.
+Angle = 134, Scale = 1.1
+Computed from reference features.
+Angle = 135, Scale = 1.1
+Computed from reference features.
+Angle = -135, Scale = 1.1
+Computed from reference features.
+Angle = -136, Scale = 1.1
+Computed from reference features.
+Angle = 136, Scale = 1.1
+Computed from reference features.
+Angle = -137, Scale = 1.1
+Computed from reference features.
+Angle = 137, Scale = 1.1
+Computed from reference features.
+Angle = 138, Scale = 1.1
+Computed from reference features.
+Angle = -138, Scale = 1.1
+Computed from reference features.
+Angle = 139, Scale = 1.1
+Computed from reference features.
+Angle = -139, Scale = 1.1
+Computed from reference features.
+Angle = 140, Scale = 1.1
+Computed from reference features.
+Angle = -140, Scale = 1.1
+Computed from reference features.
+Angle = 141, Scale = 1.1
+Computed from reference features.
+Angle = -141, Scale = 1.1
+Computed from reference features.
+Angle = -142, Scale = 1.1
+Computed from reference features.
+Angle = 142, Scale = 1.1
+Computed from reference features.
+Angle = -143, Scale = 1.1
+Computed from reference features.
+Angle = 143, Scale = 1.1
+Computed from reference features.
+Angle = -144, Scale = 1.1
+Computed from reference features.
+Angle = 144, Scale = 1.1
+Computed from reference features.
+Angle = -145, Scale = 1.1
+Computed from reference features.
+Angle = 145, Scale = 1.1
+Computed from reference features.
+Angle = 146, Scale = 1.1
+Computed from reference features.
+Angle = -146, Scale = 1.1
+Computed from reference features.
+Angle = 147, Scale = 1.1
+Computed from reference features.
+Angle = -147, Scale = 1.1
+Computed from reference features.
+Angle = 148, Scale = 1.1
+Computed from reference features.
+Angle = -148, Scale = 1.1
+Computed from reference features.
+Angle = 149, Scale = 1.1
+Computed from reference features.
+Angle = -149, Scale = 1.1
+Computed from reference features.
+Angle = 150, Scale = 1.1
+Computed from reference features.
+Angle = -150, Scale = 1.1
+Computed from reference features.
+Angle = 151, Scale = 1.1
+Computed from reference features.
+Angle = -151, Scale = 1.1
+Computed from reference features.
+Angle = -152, Scale = 1.1
+Computed from reference features.
+Angle = 152, Scale = 1.1
+Computed from reference features.
+Angle = -153, Scale = 1.1
+Computed from reference features.
+Angle = 153, Scale = 1.1
+Computed from reference features.
+Angle = 154, Scale = 1.1
+Computed from reference features.
+Angle = -154, Scale = 1.1
+Computed from reference features.
+Angle = 155, Scale = 1.1
+Computed from reference features.
+Angle = -155, Scale = 1.1
+Computed from reference features.
+Angle = -156, Scale = 1.1
+Computed from reference features.
+Angle = 156, Scale = 1.1
+Computed from reference features.
+Angle = 157, Scale = 1.1
+Computed from reference features.
+Angle = -157, Scale = 1.1
+Computed from reference features.
+Angle = -158, Scale = 1.1
+Computed from reference features.
+Angle = 158, Scale = 1.1
+Computed from reference features.
+Angle = 159, Scale = 1.1
+Computed from reference features.
+Angle = -159, Scale = 1.1
+Computed from reference features.
+Angle = -160, Scale = 1.1
+Computed from reference features.
+Angle = 160, Scale = 1.1
+Computed from reference features.
+Angle = -161, Scale = 1.1
+Computed from reference features.
+Angle = 161, Scale = 1.1
+Computed from reference features.
+Angle = -162, Scale = 1.1
+Computed from reference features.
+Angle = 162, Scale = 1.1
+Computed from reference features.
+Angle = -163, Scale = 1.1
+Computed from reference features.
+Angle = 163, Scale = 1.1
+Computed from reference features.
+Angle = -164, Scale = 1.1
+Computed from reference features.
+Angle = 164, Scale = 1.1
+Computed from reference features.
+Angle = -165, Scale = 1.1
+Computed from reference features.
+Angle = 165, Scale = 1.1
+Computed from reference features.
+Angle = -166, Scale = 1.1
+Computed from reference features.
+Angle = 166, Scale = 1.1
+Computed from reference features.
+Angle = -167, Scale = 1.1
+Computed from reference features.
+Angle = 167, Scale = 1.1
+Computed from reference features.
+Angle = -168, Scale = 1.1
+Computed from reference features.
+Angle = 168, Scale = 1.1
+Computed from reference features.
+Angle = 169, Scale = 1.1
+Computed from reference features.
+Angle = -169, Scale = 1.1
+Computed from reference features.
+Angle = -170, Scale = 1.1
+Computed from reference features.
+Angle = 170, Scale = 1.1
+Computed from reference features.
+Angle = -171, Scale = 1.1
+Computed from reference features.
+Angle = 171, Scale = 1.1
+Computed from reference features.
+Angle = -172, Scale = 1.1
+Computed from reference features.
+Angle = 172, Scale = 1.1
+Computed from reference features.
+Angle = -173, Scale = 1.1
+Computed from reference features.
+Angle = 173, Scale = 1.1
+Computed from reference features.
+Angle = -174, Scale = 1.1
+Computed from reference features.
+Angle = 174, Scale = 1.1
+Computed from reference features.
+Angle = 175, Scale = 1.1
+Computed from reference features.
+Angle = -175, Scale = 1.1
+Computed from reference features.
+Angle = -176, Scale = 1.1
+Computed from reference features.
+Angle = 176, Scale = 1.1
+Computed from reference features.
+Angle = -177, Scale = 1.1
+Computed from reference features.
+Angle = 177, Scale = 1.1
+Computed from reference features.
+Angle = 178, Scale = 1.1
+Computed from reference features.
+Angle = -178, Scale = 1.1
+Computed from reference features.
+Angle = 179, Scale = 1.1
+Computed from reference features.
+Angle = -179, Scale = 1.1
+Computed from reference features.
+Angle = -180, Scale = 1.1
+Computed from reference features.
+Angle = 180, Scale = 1.1
+Computed from reference features.
+REGISTER: Time cost
+elasped time:0.044922s
+
+DETECT: Prepare padded image
+elasped time:0.001208s
+
+L = 0, T = 4
+Quantize
+elasped time:0.000916s
+
+Spread
+elasped time:0.004231s
+
+Compute response maps
+elasped time:0.006683s
+
+Linearize response maps
+elasped time:0.004171s
+
+L = 1, T = 8
+Quantize
+elasped time:0.00027s
+
+Spread
+elasped time:0.00111s
+
+Compute response maps
+elasped time:0.001256s
+
+Linearize response maps
+elasped time:0.001171s
+
+Construct response map
+elasped time:0.044128s
+
+Template matching
+elasped time:0.020931s
+
+DETECT: Match
+elasped time:0.06707s
+
+DETECT: NMS
+elasped time:1.3e-05s
+
+init_scene_edge: compute gradients
+elasped time:6e-06s
+
+init_scene_edge: postCannyFilter
+elasped time:0.006923s
+
+init_scene_edge: initialize normal_buffer and pcd_buffer
+elasped time:0.004898s
+
+init_scene_edge: initialize normal_buffer_fixed and pcd_buffer_fixed
+elasped time:0.00525s
+
+init_scene_edge: compute normal_buffer_fixed and pcd_buffer_fixed
+elasped time:0.009747s
+
+init_scene_edge: compute normal_buffer and pcd_buffer
+elasped time:0.004856s
+
+DETECT: Init scene
+elasped time:0.036282s
+
+1 [Original] Region: { [345.00, 396.50], [448.00 x 175.00], -5.00}, Scale = 1.00, Score = 98.60
+1 [Refined] Region: { [344.94, 396.05], [448.00 x 175.00], -5.24}, Scale = 1.00, Score = 98.60
+DETECT: Refine(k)
+elasped time:0.00s
+
+2 [Original] Region: { [393.00, 160.50], [448.00 x 175.00], 177.00}, Scale = 1.00, Score = 93.86
+2 [Refined] Region: { [393.27, 160.20], [448.00 x 175.00], 176.70}, Scale = 0.99, Score = 93.86
+DETECT: Refine(k)
+elasped time:0.00s
+
+DETECT: Time cost
+elasped time:0.11s
+
