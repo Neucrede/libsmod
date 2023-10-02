@@ -255,7 +255,7 @@ bool ShapeModelObjectDetector::Detect(cv::Mat& src,
         quantizer->sobel_dx0.convertTo(Dx, CV_16S, 128);
         quantizer->sobel_dy0.convertTo(Dy, CV_16S, 128);
         
-        scene.init_Scene_edge_cpu(m_srcPadded, pcdBuf, normalBuf, 1.0f,
+        scene.init_Scene_edge_cpu(m_srcPadded, pcdBuf, normalBuf, 2.0f,
             0.8 * m_detector.modality->weak_threshold, 
             0.8 * m_detector.modality->strong_threshold,
             Dx, Dy);

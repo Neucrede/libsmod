@@ -1356,6 +1356,7 @@ static Rect cropTemplates(std::vector<Template> &templates)
     // Second pass: set width/height and shift all feature positions
     for (int i = 0; i < (int)templates.size(); ++i) {
         Template &templ = templates[i];
+
         templ.width = (max_x - min_x) >> templ.pyramid_level;
         templ.height = (max_y - min_y) >> templ.pyramid_level;
         templ.tl_x = min_x >> templ.pyramid_level;
@@ -1886,7 +1887,7 @@ void Detector::matchClass(const LinearMemoryPyramid &lm_pyramid,
                     continue;
                 }
                 
-                int x = match2.x * 2 + 1; /// @todo Support other pyramid distance
+                int x = match2.x * 2 + 1;
                 int y = match2.y * 2 + 1;
 
                 // Require 8 (reduced) row/cols to the up/left
@@ -1933,8 +1934,8 @@ void Detector::matchClass(const LinearMemoryPyramid &lm_pyramid,
                 
                 // Update current match
                 match2.similarity = best_score;
-                match2.x = (x / T - 8 + best_c) * T + offset;
-                match2.y = (y / T - 8 + best_r) * T + offset;
+                match2.x = (x / T - 8) * T + best_c * T + offset;
+                match2.y = (y / T - 8) * T + best_r * T + offset;
             }
             
             // Filter out any matches that drop below the similarity threshold
@@ -1949,4 +1950,3 @@ void Detector::matchClass(const LinearMemoryPyramid &lm_pyramid,
 }
 
 } // namespace Line2Dup
-
