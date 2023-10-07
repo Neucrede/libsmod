@@ -67,10 +67,12 @@ void ShapeInfo::write(cv::FileStorage &fs) const
        
     for (int i = 0; i < infos.size(); i++)
     {
-        fs << "{";
-        fs << "angle" << valid_infos[i].angle;
-        fs << "scale" << valid_infos[i].scale;
-        fs << "}";
+        if (i < valid_infos.size()) {
+            fs << "{";
+            fs << "angle" << valid_infos[i].angle;
+            fs << "scale" << valid_infos[i].scale;
+            fs << "}";
+        }
     }
     
     fs << "]";

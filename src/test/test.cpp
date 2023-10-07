@@ -8,7 +8,7 @@ void TestSMOD(int argc, char* argv[])
 
     std::vector<int> T(2, 0);
     ShapeModelObjectDetector smod(-180, 180, 1, 0.9, 1.1, 0.1, true,
-        8192, T, 30, 50, 360, 16);
+        8192, T, 30, 60, 360, 16 /* 8 */);
     cv::Mat img = cv::imread(argv[1], cv::IMREAD_GRAYSCALE);
     smod.SetDebug();
     smod.SetDebugImagePath("smod_result.png");

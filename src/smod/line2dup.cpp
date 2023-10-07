@@ -214,6 +214,10 @@ bool ColorGradientPyramid::extractTemplate(Template &templ) const
     if (!selectScatteredFeatures(candidates, templ.features, num_features, distance)) {
         return false;
     }
+
+    if (templ.features.size() > max_features) {
+        templ.features.resize(max_features);
+    }
     
     // Size determined externally, needs to match templates for other modalities
     templ.width = -1;
@@ -682,17 +686,30 @@ static void computeResponseMaps(const Mat &src, std::vector<Mat> &response_maps)
     Mat lsb4(src.size(), CV_8U);
     Mat msb4(src.size(), CV_8U);
 
+    const int N = mipp::N<int8_t>();
+    CV_DbgAssert(N == 16);
+    const int N0 = src.cols / N * N;
+    const mipp::Reg<int8_t> rMaskLSB = 0x0F;
+    const mipp::Reg<int8_t> rMaskMSB = 0xF0;
     for (int r = 0; r < src.rows; ++r) {
-        const uchar *src_r = src.ptr(r);
-        uchar *lsb4_r = lsb4.ptr(r);
-        uchar *msb4_r = msb4.ptr(r);
+        const int8_t *src_r = (int8_t*)src.ptr(r);
+        int8_t *prLSB = (int8_t*)lsb4.ptr(r);
+        int8_t *prMSB = (int8_t*)msb4.ptr(r);
 
-        for (int c = 0; c < src.cols; ++c) {
-            // Least significant 4 bits of spread image pixel
-            lsb4_r[c] = src_r[c] & 0x0F;
+        for (int c = 0; c < N0; c += N) {
+            mipp::Reg<int8_t> rSrc0(src_r + c);
 
-            // Most significant 4 bits, right-shifted to be in [0, 16)
-            msb4_r[c] = (src_r[c] & 0xF0) >> 4;
+            mipp::andb(rSrc0, rMaskLSB).store(prLSB);
+            mipp::rshift(mipp::andb(rSrc0, rMaskMSB), 4).store(prMSB);
+
+            prLSB += N;
+            prMSB += N;
+        }
+
+        for (int c = N0, k = 0; c < N; ++c, ++k) {
+            int8_t s = src.at<int8_t>(r, c);
+            prLSB[k] = (int8_t)(s & 0x0F);
+            prMSB[k] = (int8_t)((s & 0xF0) >> 4);
         }
     }
 
@@ -838,7 +855,7 @@ static void computeResponseMaps16(const Mat &src, std::vector<Mat> &response_map
 
     const int N = mipp::N<int16_t>();
     CV_DbgAssert(N == 8);
-    const volatile int N0 = src.cols / (N * 2) * (N * 2);
+    const int N0 = src.cols / (N * 2) * (N * 2);
     const mipp::Reg<int16_t> rMask0_3   = 0x000F;
     const mipp::Reg<int16_t> rMask4_7   = 0x00F0;
     const mipp::Reg<int16_t> rMask8_11  = 0x0F00;
