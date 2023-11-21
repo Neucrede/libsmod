@@ -88,11 +88,13 @@ bool ShapeModelObjectDetector::Register(const cv::Mat& img, const cv::Mat& mask,
     
     ComputePaddings(img);
 
+    /*
     cv::Mat imgBlurred;
     cv::GaussianBlur(img, imgBlurred, cv::Size(3, 3), 1.0, 1.0);
+    */
 
     cv::Mat imgPadded;
-    cv::copyMakeBorder(imgBlurred, imgPadded, m_dh, m_dh, m_dw, m_dw, 
+    cv::copyMakeBorder(img /* imgBlurred */, imgPadded, m_dh, m_dh, m_dw, m_dw, 
         cv::BORDER_CONSTANT, cv::Scalar::all(0));
     cv::Mat mask1, maskPadded;
     if (!mask.empty()) {
@@ -446,6 +448,58 @@ void ShapeModelObjectDetector::BilateralFilter(const cv::Mat& src, cv::Mat& dst,
     if (sigmaRange <= 0.001f) sigmaRange = 1.0f;
 
     cv::bilateralFilter(src, dst, kernelSize, sigmaRange, sigmaDomain);
+} 
+
+void ShapeModelObjectDetector::CLAHE(const cv::Mat& src, cv::Mat& dst, float clipLimit,
+    cv::Size gridSize)
+{
+    if (src.empty()) {
+        throw std::invalid_argument("Source image is empty.");
+    }
+    
+    if (src.channels() != 1) {
+        throw std::runtime_error("Source image must be monochannel.");
+    }
+
+    cv::Ptr<cv::CLAHE> pCLAHE = cv::createCLAHE(clipLimit, gridSize);
+    try {
+        pCLAHE->apply(src, dst);
+    }
+    catch (std::exception &e) {
+        std::cerr << "CLAHE: " << e.what() << "\n";
+        dst = src.clone();
+    }
+}
+
+void ShapeModelObjectDetector::CreateMask(const cv::Mat& src, cv::Mat& dst, int lowThresh,
+    int highThresh, int dilateSize)
+{
+    if (src.empty()) {
+        throw std::invalid_argument("Source image is empty.");
+    }
+
+    cv::Mat srcGray;
+    if (src.channels() == 1) {
+        srcGray = src;
+    }
+    else {
+        cv::cvtColor(src, srcGray, cv::COLOR_BGR2GRAY);
+    }
+
+    if (lowThresh < highThresh) {
+        dst = (srcGray >= lowThresh) & (srcGray <= highThresh);
+    }
+    else {
+        dst = (srcGray >= lowThresh) | (srcGray <= highThresh);
+    }
+
+    if (dilateSize > 0) {
+        cv::dilate(dst, dst, 
+            cv::getStructuringElement(cv::MORPH_RECT, cv::Size(dilateSize, dilateSize)));
+    }
+
+    cv::rectangle(dst, cv::Rect(0, 0, dst.cols, dst.rows), cv::Scalar::all(0),
+        std::max(7, dilateSize));
 }
 
 void ShapeModelObjectDetector::SetRefine(bool refine)

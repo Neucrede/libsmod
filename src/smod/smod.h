@@ -149,6 +149,14 @@ public:
     static void BilateralFilter(const cv::Mat& src, cv::Mat& dst,
         int kernelSize = 7, float sigmaDomain = 10.0f, float sigmaRange = 10.0f);
 
+    /** Provided for convenience. */
+    static void CLAHE(const cv::Mat& src, cv::Mat& dst, float clipLimit,
+        cv::Size gridSize);
+
+    /** Provided for convenience. */
+    static void CreateMask(const cv::Mat& src, cv::Mat& dst, int lowThresh,
+        int highThresh, int dilateSize);
+
     /** Enable / disable detection result refinement. */
     void SetRefine(bool refine = true);
     /** Enable / disable debug info printout. */
