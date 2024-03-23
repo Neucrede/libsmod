@@ -130,19 +130,18 @@ bool ShapeModelObjectDetector::Register(const cv::Mat& img, const cv::Mat& mask,
         }
     }
     else {
+        const float maxFastRegAngleDiff = 5.0f;
         float scale0 = -1, angle0;
         int id0;
         cv::Point2f centre(m_shapeInfo.src.cols / 2.0f, m_shapeInfo.src.rows / 2.0f);
         for (size_t i = 0; i != m_shapeInfo.infos.size(); ++i) {
             const ShapeInfo::Info &info = m_shapeInfo.infos[i];
             
-            if (m_debug) {
-                std::cout   << "Angle = " << info.angle 
-                            << ", Scale = " << info.scale 
-                            << std::endl;
-            }
-            
             if (info.scale != scale0) {
+                if (m_debug) {
+                    std::cout << "[Precise] ";
+                }
+
                 int id = m_detector.addTemplate(m_shapeInfo.srcOf(info), m_classId, 
                     m_shapeInfo.maskOf(info));
                 if (id >= 0) {
@@ -156,6 +155,18 @@ bool ShapeModelObjectDetector::Register(const cv::Mat& img, const cv::Mat& mask,
                 }
             }
             else {
+                // Add more accuracy.
+                if (std::abs(info.angle - angle0) >= maxFastRegAngleDiff) {
+                    // Force using precise registration method.
+                    scale0 = -1;
+                    --i;
+                    continue;
+                }
+
+                if (m_debug) {
+                    std::cout << "[Fast] ";
+                }
+
                 int id = m_detector.addTemplateRotate(m_classId, id0, info.angle - angle0,
                     centre);
                 
@@ -166,6 +177,12 @@ bool ShapeModelObjectDetector::Register(const cv::Mat& img, const cv::Mat& mask,
                 if (id >= 0) {
                     m_shapeInfo.valid_infos.push_back(info);
                 }
+            }
+
+            if (m_debug) {
+                std::cout   << "Angle = " << info.angle 
+                    << ", Scale = " << info.scale 
+                    << std::endl;
             }
         }
     }

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.1)
 
 # opencv
-find_package(OpenCV 3 REQUIRED)
+find_package(OpenCV 3 REQUIRED core )
 include_directories (${OpenCV_INCLUDE_DIRS})
 
 # openmp
@@ -51,14 +51,19 @@ install(
 )
 
 set(INCLUDE_DIRS ${CMAKE_INSTALL_INCLUDEDIR}/smod)
-set(LIBRARIES ${CMAKE_INSTALL_LIBDIR}/libsmod.dll.a)
+set(LIBRARY_DIRS ${CMAKE_INSTALL_LIBDIR})
+if (CMAKE_HOST_WIN32)
+    set(LIBRARIES ${CMAKE_INSTALL_LIBDIR}/libsmod${CMAKE_IMPORT_LIBRARY_SUFFIX})
+else ()
+    set(LIBRARIES ${CMAKE_INSTALL_LIBDIR}/libsmod${CMAKE_SHARED_LIBRARY_SUFFIX})
+endif ()
 
 include(CMakePackageConfigHelpers)
 # generate the config file that is includes the exports
 configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/config.cmake.in
     "${CMAKE_CURRENT_BINARY_DIR}/libsmodConfig.cmake"
     INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    PATH_VARS INCLUDE_DIRS LIBRARIES
+    PATH_VARS INCLUDE_DIRS LIBRARY_DIRS LIBRARIES
     NO_SET_AND_CHECK_MACRO
     NO_CHECK_REQUIRED_COMPONENTS_MACRO
 )
@@ -66,7 +71,7 @@ configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/config.cmake.in
 # generate the version file for the config file
 write_basic_package_version_file(
     "${CMAKE_CURRENT_BINARY_DIR}/libsmodConfigVersion.cmake"
-    VERSION "1.0"
+    VERSION "1.0.1"
     COMPATIBILITY AnyNewerVersion
 )
 
