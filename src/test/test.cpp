@@ -8,26 +8,19 @@ void TestSMOD(int argc, char* argv[])
 
     std::vector<int> T(2, 0);
     ShapeModelObjectDetector smod(-180, 180, 1, 0.9, 1.1, 0.1, true,
-        8192, T, 30, 60, 360, 16 /* 8 */);
+        256, T, 50, 100, 360, 16 /* 8 */, 60.0f, true);
     cv::Mat img = cv::imread(argv[1], cv::IMREAD_GRAYSCALE);
     smod.SetDebug();
     smod.SetDebugImagePath("smod_result.png");
     smod.Register(img, cv::Mat(), true);
     smod.Save("model.yaml");
-    
-    /*
-    ShapeModelObjectDetector smod;
-    smod.Load("model.yaml");
-    smod.SetDebug();
-    smod.SetDebugImagePath("smod_debug.png");
-    */
 
     std::vector<Result> results;
     cv::Mat imgSrc = cv::imread(argv[2], cv::IMREAD_GRAYSCALE);
 
     if (imgSrc.empty()) return;
 
-    smod.Detect(imgSrc, results, 75, 5);
+    smod.Detect(imgSrc, results, 50, 100);
 
     if (!results.empty()) {
         cv::Mat imgCrop;

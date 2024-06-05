@@ -22,7 +22,8 @@ public:
 
         bool operator < (const Info& rhs) const 
         {
-            return std::abs(angle) < std::abs(rhs.angle);
+            // return std::abs(angle) < std::abs(rhs.angle);
+            return (angle < rhs.angle);
         }
     };
     
@@ -57,4 +58,3 @@ public:
 } // SMOD
 
 #endif        //  #ifndef SHAPEINFO_H
-

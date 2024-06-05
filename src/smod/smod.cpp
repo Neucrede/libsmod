@@ -14,9 +14,11 @@ ShapeModelObjectDetector::ShapeModelObjectDetector(
     float angleMin, float angleMax, float angleStep,
     float scaleMin, float scaleMax, float scaleStep, bool refine,
     int numFeatures, const std::vector<int>& T, float weakThreshold, 
-    float strongThreshold, float maxGradient, int numOri)
+    float strongThreshold, float maxGradient, int numOri, float gvCompareThreshold,
+    bool enableGVCompare)
 : m_detector(numFeatures, T, weakThreshold, strongThreshold, maxGradient, numOri),
-    m_classId("CLASS1"), m_debug(false), m_refine(refine)
+    m_classId("CLASS1"), m_debug(false), m_refine(refine), m_gvCompareThreshold(gvCompareThreshold),
+    m_enableGVCompare(enableGVCompare)
 {
     m_shapeInfo.angle_range = { angleMin, angleMax };
     m_shapeInfo.scale_range = { scaleMin, scaleMax };
@@ -45,6 +47,12 @@ bool ShapeModelObjectDetector::Load(const std::string& filename)
     m_detector.read(fs["Detector"]);
     m_detector.readClasses(fs["Classes"]);
     
+    fs["TemplateImage"] >> m_imgTmpl;
+    
+    if (!m_imgTmpl.empty()) {
+        ComputeMeanSqsum(m_imgTmpl, m_tmplMean, m_tmplSqsum);
+    }
+    
     return true;
 }
 
@@ -72,6 +80,8 @@ bool ShapeModelObjectDetector::Save(const std::string& filename) const
     
     m_detector.writeClasses(fs);
     
+    fs << "TemplateImage" << m_imgTmpl;
+    
     return true;
 }
 
@@ -82,19 +92,28 @@ bool ShapeModelObjectDetector::Register(const cv::Mat& img, const cv::Mat& mask,
         throw std::invalid_argument("Image is empty.");
     }
     
+    cv::Mat imgGray;
+    if (img.channels() == 1) {
+        imgGray = img;
+    }
+    else if (img.channels() == 3) {
+        cv::cvtColor(img, imgGray, cv::COLOR_BGR2GRAY);
+    }
+    else {
+        throw std::runtime_error("img: image channels must be 1 or 3.");
+    }
+    
     Timer timer;
     
-    m_tmplSize = img.size();
+    m_tmplSize = imgGray.size();
     
     ComputePaddings(img);
-
-    /*
-    cv::Mat imgBlurred;
-    cv::GaussianBlur(img, imgBlurred, cv::Size(3, 3), 1.0, 1.0);
-    */
+    
+    m_imgTmpl = imgGray.clone();
+    ComputeMeanSqsum(m_imgTmpl, m_tmplMean, m_tmplSqsum);
 
     cv::Mat imgPadded;
-    cv::copyMakeBorder(img /* imgBlurred */, imgPadded, m_dh, m_dh, m_dw, m_dw, 
+    cv::copyMakeBorder(imgGray, imgPadded, m_dh, m_dh, m_dw, m_dw, 
         cv::BORDER_CONSTANT, cv::Scalar::all(0));
     cv::Mat mask1, maskPadded;
     if (!mask.empty()) {
@@ -155,7 +174,7 @@ bool ShapeModelObjectDetector::Register(const cv::Mat& img, const cv::Mat& mask,
                 }
             }
             else {
-                // Add more accuracy.
+                // More accurate.
                 if (std::abs(info.angle - angle0) >= maxFastRegAngleDiff) {
                     // Force using precise registration method.
                     scale0 = -1;
@@ -196,16 +215,28 @@ bool ShapeModelObjectDetector::Register(const cv::Mat& img, const cv::Mat& mask,
 
 bool ShapeModelObjectDetector::Detect(cv::Mat& src, 
     std::vector<Result>& results, float threshold, int maxNumMatches)
-{   
+{
     if (src.empty()) {
         throw std::invalid_argument("Source image is empty.");
+    }
+    
+    cv::Mat srcGray;
+    if (src.channels() == 1) {
+        srcGray = src;
+    }
+    else if (src.channels() == 3) {
+        cv::cvtColor(src, srcGray, cv::COLOR_BGR2GRAY);
+    }
+    else {
+        throw std::runtime_error("src: image channels must be 1 or 3.");
     }
     
     cv::Mat imgDbg;
     Timer timer, timer0;
 
-    if (maxNumMatches <= 0) {
-        maxNumMatches = 65535;
+    int maxNumMatches1 = maxNumMatches;
+    if ((maxNumMatches <= 0) || (maxNumMatches > 1024) || (m_enableGVCompare)) {
+        maxNumMatches1 = 1024;
     }
     
     results.clear();
@@ -222,7 +253,7 @@ bool ShapeModelObjectDetector::Detect(cv::Mat& src,
         m_srcSize = cv::Size(src.cols, src.rows);
     }
     
-    src.copyTo(m_srcPadded(cv::Rect(m_dw, m_dh, src.cols, src.rows)));
+    srcGray.copyTo(m_srcPadded(cv::Rect(m_dw, m_dh, srcGray.cols, srcGray.rows)));
     
     if (m_debug) {
         if (src.channels() == 1) {
@@ -238,7 +269,7 @@ bool ShapeModelObjectDetector::Detect(cv::Mat& src,
     cv::Ptr<Line2Dup::ColorGradientPyramid> quantizer;
     std::vector<std::string> ids = { m_classId };
     std::vector<Line2Dup::Match> matches 
-        = m_detector.match(m_srcPadded, threshold, quantizer, ids, cv::Mat(), maxNumMatches);
+        = m_detector.match(m_srcPadded, threshold, quantizer, ids, cv::Mat(), maxNumMatches1);
     if (m_debug) {
         timer.out("DETECT: Match");
     }
@@ -284,7 +315,10 @@ bool ShapeModelObjectDetector::Detect(cv::Mat& src,
         }
     }
     
-    for (size_t k = 0; k != std::min((size_t)maxNumMatches, indices.size()); ++k) {
+    for (size_t k = 0, numQualified = 0; 
+        (k != std::min((size_t)maxNumMatches1, indices.size())) && (numQualified < maxNumMatches); 
+        ++k) 
+    {
         int i = indices[k];
         const Line2Dup::Match& match = matches[i];
         const std::vector<Line2Dup::Template>& tmpls
@@ -300,8 +334,34 @@ bool ShapeModelObjectDetector::Detect(cv::Mat& src,
             (float)m_tmplSize.width,
             (float)m_tmplSize.height
         );
-                
-        results.emplace_back(centre, rSize, -info.angle, info.scale, match.similarity);
+        
+        Result result0(centre, rSize, -info.angle, info.scale, match.similarity);
+        
+        if (m_enableGVCompare) {
+            cv::Mat imgCandidate;
+            CropImage(srcGray, imgCandidate, result0, true);
+            if (imgCandidate.size() != m_tmplSize) {
+                cv::resize(imgCandidate, imgCandidate, m_tmplSize, 0, 0, cv::INTER_NEAREST);
+            }
+                        
+            float pearson = ComputePearson(imgCandidate);
+            if (m_debug) {
+                std::cout << k + 1 << " GVCompare: Pearson correlation coefficient = " << pearson << std::endl;
+            }
+            
+            if (pearson < m_gvCompareThreshold) {
+                if (m_debug) {
+                    std::cout << k + 1 << " GVCompare: SKIP" << std::endl;
+                }
+                continue;
+            }
+            else if (m_debug) {
+                std::cout << k + 1 << " GVCompare: ACCEPT" << std::endl;
+            }
+        }
+        
+        ++numQualified; 
+        results.push_back(result0);
         Result& result = results.back();
         
         if (m_debug) {
@@ -384,10 +444,10 @@ bool ShapeModelObjectDetector::Detect(cv::Mat& src,
         cv::imwrite(m_debugImagePath, imgDbg);
     }
     
-    return true;
+    return (!results.empty());
 }
 
-bool ShapeModelObjectDetector::CropImage(const cv::Mat& src, cv::Mat& dst,
+void ShapeModelObjectDetector::CropImage(const cv::Mat& src, cv::Mat& dst,
     const cv::RotatedRect& region, float scale, bool enableScaling)
 {
     if (src.empty()) {
@@ -436,92 +496,29 @@ bool ShapeModelObjectDetector::CropImage(const cv::Mat& src, cv::Mat& dst,
     cv::warpAffine(src, dst, H, 
         cv::Size(std::ceil(scale * size.width), std::ceil(scale * size.height)),
         scale > 1.0 ? cv::INTER_CUBIC : cv::INTER_AREA);
-    
-    return true;
 }
 
-bool ShapeModelObjectDetector::CropImage(const cv::Mat& src, cv::Mat& dst,
+void ShapeModelObjectDetector::CropImage(const cv::Mat& src, cv::Mat& dst,
     const Result& result, bool enableScaling)
 {
-    return CropImage(src, dst, result.region, result.scale, enableScaling);
-}
-
-void ShapeModelObjectDetector::BilateralFilter(const cv::Mat& src, cv::Mat& dst,
-    int kernelSize, float sigmaDomain, float sigmaRange)
-{
-    if (src.empty()) {
-        throw std::invalid_argument("Source image is empty.");
-    }
-    
-    if (kernelSize >= 2) {
-        kernelSize = ((kernelSize >> 1) << 1) + 1;
-    }
-    else if (kernelSize >= 0) {
-        dst = src.clone();
-        return;
-    }
-    
-    if (sigmaDomain <= 0.001f) sigmaDomain = 1.0f;
-    if (sigmaRange <= 0.001f) sigmaRange = 1.0f;
-
-    cv::bilateralFilter(src, dst, kernelSize, sigmaRange, sigmaDomain);
-} 
-
-void ShapeModelObjectDetector::CLAHE(const cv::Mat& src, cv::Mat& dst, float clipLimit,
-    cv::Size gridSize)
-{
-    if (src.empty()) {
-        throw std::invalid_argument("Source image is empty.");
-    }
-    
-    if (src.channels() != 1) {
-        throw std::runtime_error("Source image must be monochannel.");
-    }
-
-    cv::Ptr<cv::CLAHE> pCLAHE = cv::createCLAHE(clipLimit, gridSize);
-    try {
-        pCLAHE->apply(src, dst);
-    }
-    catch (std::exception &e) {
-        std::cerr << "CLAHE: " << e.what() << "\n";
-        dst = src.clone();
-    }
-}
-
-void ShapeModelObjectDetector::CreateMask(const cv::Mat& src, cv::Mat& dst, int lowThresh,
-    int highThresh, int dilateSize)
-{
-    if (src.empty()) {
-        throw std::invalid_argument("Source image is empty.");
-    }
-
-    cv::Mat srcGray;
-    if (src.channels() == 1) {
-        srcGray = src;
-    }
-    else {
-        cv::cvtColor(src, srcGray, cv::COLOR_BGR2GRAY);
-    }
-
-    if (lowThresh < highThresh) {
-        dst = (srcGray >= lowThresh) & (srcGray <= highThresh);
-    }
-    else {
-        dst = (srcGray >= lowThresh) | (srcGray <= highThresh);
-    }
-
-    if (dilateSize > 0) {
-        cv::dilate(dst, dst, 
-            cv::getStructuringElement(cv::MORPH_RECT, cv::Size(dilateSize, dilateSize)));
-    }
-
-    cv::rectangle(dst, cv::Rect(0, 0, dst.cols, dst.rows), cv::Scalar::all(0),
-        std::max(7, dilateSize));
+    CropImage(src, dst, result.region, result.scale, enableScaling);
 }
 
 void ShapeModelObjectDetector::SetRefine(bool refine)
 {
     m_refine = refine;
+}
+
+void ShapeModelObjectDetector::SetGVCompareThreshold(float thresh)
+{
+    if ((thresh >= 0.0f) && (thresh <= 100.0f)) {
+        m_gvCompareThreshold = thresh;
+    }
+}
+
+void ShapeModelObjectDetector::SetGVCompare(bool enable)
+{
+    m_enableGVCompare = enable;
 }
 
 void ShapeModelObjectDetector::SetDebug(bool debug)
@@ -553,4 +550,23 @@ void ShapeModelObjectDetector::ComputePaddings(const cv::Mat& src)
 
     m_dw = std::ceil((lenDiag - src.cols) / 2.0f);
     m_dh = std::ceil((lenDiag - src.rows) / 2.0f);
+}
+
+float ShapeModelObjectDetector::ComputePearson(const cv::Mat& src)
+{
+    float srcMean, srcSqsum;
+    ComputeMeanSqsum(src, srcMean, srcSqsum);
+    float area = (float)(m_tmplSize.area());
+    float numer = src.dot(m_imgTmpl) - area * m_tmplMean * srcMean;
+    float denom = std::sqrt(srcSqsum - area * srcMean * srcMean) 
+                * std::sqrt(m_tmplSqsum - area * m_tmplMean * m_tmplMean);
+    if (denom == 0.f) denom = 1.0e-9f;
+    return (100.0f * numer / denom);
+}
+
+void ShapeModelObjectDetector::ComputeMeanSqsum(const cv::Mat& img, float &mean, float &sqsum)
+{
+    cv::Scalar mean0 = cv::mean(img);
+    mean = mean0[0];
+    sqsum = cv::norm(img, cv::NORM_L2SQR);
 }

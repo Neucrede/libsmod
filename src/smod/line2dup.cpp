@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include <opencv2/imgcodecs.hpp>
 #include "line2dup.h"
 #include "mipp.h" 
@@ -129,14 +130,14 @@ bool ColorGradientPyramid::extractTemplate(Template &templ) const
     
     std::vector<Candidate> candidates;
     bool no_mask = local_mask.empty();
-    float threshold_sq = strong_threshold * strong_threshold;
+    float threshold_sq = std::pow(0.5f * (weak_threshold + strong_threshold), 2);
 
     float max_mag = max_gradient * max_gradient;
     if (max_mag < threshold_sq) {
         max_mag = threshold_sq + 1;
     }
 
-    int nms_kernel_size = 5;
+    int nms_kernel_size = 3;
     cv::Mat magnitude_valid = cv::Mat(magnitude.size(), CV_8UC1, cv::Scalar(255));
 
     for (int r = 0+nms_kernel_size/2; r < magnitude.rows-nms_kernel_size/2; ++r) {
@@ -391,7 +392,7 @@ void ColorGradientPyramid::hysteresisGradient(Mat &magnitude, Mat &quantized_ang
                 }
 
                 // Only accept the quantization if majority of pixels in the patch agree
-                static const int NEIGHBOR_THRESHOLD = 5;
+                static const int NEIGHBOR_THRESHOLD = num_ori / 4;
                 if (max_votes >= NEIGHBOR_THRESHOLD) {
                     if (num_ori == 8) {
                         quantized_angle.at<uchar>(r, c) = uchar(1 << index);
@@ -455,74 +456,7 @@ void ColorGradientPyramid::quantizedOrientations(const Mat &src, Mat &magnitude,
         angle_ori = sobel_ag;
     }
     else {
-        magnitude.create(src.size(), CV_32F);
-
-        // Allocate temporary buffers
-        Size size = src.size();
-        Mat sobel_3dx;              // per-channel horizontal derivative
-        Mat sobel_3dy;              // per-channel vertical derivative
-        Mat sobel_dx(size, CV_32F); // maximum horizontal derivative
-        Mat sobel_dy(size, CV_32F); // maximum vertical derivative
-        Mat sobel_ag;               // final gradient orientation (unquantized)
-
-        Sobel(src, sobel_3dx, CV_16S, 1, 0, 3, 1.0, 0.0, BORDER_REPLICATE);
-        Sobel(src, sobel_3dy, CV_16S, 0, 1, 3, 1.0, 0.0, BORDER_REPLICATE);
-
-        short *ptrx = (short *)sobel_3dx.data;
-        short *ptry = (short *)sobel_3dy.data;
-        float *ptr0x = (float *)sobel_dx.data;
-        float *ptr0y = (float *)sobel_dy.data;
-        float *ptrmg = (float *)magnitude.data;
-
-        const int length1 = static_cast<const int>(sobel_3dx.step1());
-        const int length2 = static_cast<const int>(sobel_3dy.step1());
-        const int length3 = static_cast<const int>(sobel_dx.step1());
-        const int length4 = static_cast<const int>(sobel_dy.step1());
-        const int length5 = static_cast<const int>(magnitude.step1());
-        const int length0 = sobel_3dy.cols * 3;
-
-        for (int r = 0; r < sobel_3dy.rows; ++r)
-        {
-            int ind = 0;
-
-            for (int i = 0; i < length0; i += 3)
-            {
-                // Use the gradient orientation of the channel whose magnitude is largest
-                int mag1 = ptrx[i + 0] * ptrx[i + 0] + ptry[i + 0] * ptry[i + 0];
-                int mag2 = ptrx[i + 1] * ptrx[i + 1] + ptry[i + 1] * ptry[i + 1];
-                int mag3 = ptrx[i + 2] * ptrx[i + 2] + ptry[i + 2] * ptry[i + 2];
-
-                if (mag1 >= mag2 && mag1 >= mag3)
-                {
-                    ptr0x[ind] = ptrx[i] / 4.0f;
-                    ptr0y[ind] = ptry[i] / 4.0f;
-                    ptrmg[ind] = (float)mag1 / 16.0f;
-                }
-                else if (mag2 >= mag1 && mag2 >= mag3)
-                {
-                    ptr0x[ind] = ptrx[i + 1] / 4.0f;
-                    ptr0y[ind] = ptry[i + 1] / 4.0f;
-                    ptrmg[ind] = (float)mag2 / 16.0f;
-                }
-                else
-                {
-                    ptr0x[ind] = ptrx[i + 2] / 4.0f;
-                    ptr0y[ind] = ptry[i + 2] / 4.0f;
-                    ptrmg[ind] = (float)mag3 / 16.0f;
-                }
-                ++ind;
-            }
-            ptrx += length1;
-            ptry += length2;
-            ptr0x += length3;
-            ptr0y += length4;
-            ptrmg += length5;
-        }
-
-        // Calculate the final gradient orientations
-        phase(sobel_dx, sobel_dy, sobel_ag, true);
-        hysteresisGradient(magnitude, angle, sobel_ag, threshold * threshold);
-        angle_ori = sobel_ag;
+        CV_Error(Error::StsBadArg, "Number of image channels must be 1.");
     }
 }
 
@@ -1818,8 +1752,8 @@ void Detector::matchClass(const LinearMemoryPyramid &lm_pyramid,
     const std::vector<TemplatePyramid> &template_pyramids,
     int num_max_matches) const
 {
-    if (num_max_matches <= 0) {
-        num_max_matches = 65535;
+    if ((num_max_matches <= 0) || (num_max_matches > 1024)) {
+        num_max_matches = 1024;
     }
     
 #pragma omp declare reduction \

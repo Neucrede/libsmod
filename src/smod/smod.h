@@ -68,28 +68,34 @@ public:
     /**
      * \brief Constructor.
      *
-     * \param [in] angleMin     Minimum rotation angle relative to the template,
-     *                          in degrees.
-     * \param [in] angleMax     Maximum rotation angle relative to the template,
-     *                          in degrees.
-     * \param [in] angleStep    Accuracy of rotation angle in degrees.
-     * \param [in] scaleMin     Minimum scale relative to the template.
-     * \param [in] scaleMax     Maximum scale relative to the template.
-     * \param [in] scaleStep    Accuracy of scaling.
-     * \param [in] refine       To refine detection results or not.
-     * \param [in] numFeatures  Maximum number of features.
-     * \param [in] T            Size of the orientation spreading neighbourhood
-     *                          for each pyramid level. The number of levels of 
-     *                          the image pyramid is the same as the number of
-     *                          elements of T. Setting T to a vector filled with 
-     *                          n zeros will result an image pyramid of n levels
-     *                          and a T_at_level array of {4, 8, 16, ...}.
-     * \param [in] weakThreshold    Lower threshold used in hysteresis thresholing
-     *                              on gradient magnitudes.
-     * \param [in] strongThreshold  Upper threshold used in hysteresis thresholing
-     *                              on gradient magnitudes.
-     * \param [in] maxGradient  Maximum gradient magnitude allowed.
-     * \param [in] numOri       Number of quantization bins. Must be 8 or 16 (default).
+     * \param [in] angleMin             Minimum rotation angle relative to the template,
+     *                                  in degrees.
+     * \param [in] angleMax             Maximum rotation angle relative to the template,
+     *                                  in degrees.
+     * \param [in] angleStep            Stepping of rotation angle in degrees.
+     * \param [in] scaleMin             Minimum scale relative to the template.
+     * \param [in] scaleMax             Maximum scale relative to the template.
+     * \param [in] scaleStep            Stepping of scale factor.
+     * \param [in] refine               To refine detection results or not.
+     * \param [in] numFeatures          Maximum number of features. Must not exceed 8190.
+     * \param [in] T                    Size of the orientation spreading neighbourhood
+     *                                  for each pyramid level. The number of levels of 
+     *                                  the image pyramid is the same as the number of
+     *                                  elements of T. Setting T to a vector filled with 
+     *                                  n zeros will result an image pyramid of n levels
+     *                                  and a T_at_level array of {4, 8, 16, ...}.
+     * \param [in] weakThreshold        Lower threshold used in hysteresis thresholing
+     *                                  on gradient magnitudes. The valid value range
+     *                                  is from 0 to 361.
+     * \param [in] strongThreshold      Upper threshold used in hysteresis thresholing
+     *                                  on gradient magnitudes. The valid value range
+     *                                  is from 0 to 361.
+     * \param [in] maxGradient          Maximum gradient magnitude allowed. The valid value range
+     *                                  is from 0 to 361.
+     * \param [in] numOri               Number of quantization bins. Must be 8 or 16 (default).
+     * \param [in] gvCompareThreshold   Threshold value of grayvalue comparison.
+     *                                  The valid value range is from 0 to 100.
+     * \param [in] enableGVCompare      Whether to enable grayvalue comparison.
      */
     ShapeModelObjectDetector( 
         float angleMin = 0.0f, float angleMax = 360.0f, float angleStep = 1.0f,
@@ -98,12 +104,15 @@ public:
         int numFeatures = 128, 
         const std::vector<int>& T = { 4, 8 },
         float weakThreshold = 30.0f, float strongThreshold = 60.0f, 
-        float maxGradient = 255.0f, int numOri = 16);
+        float maxGradient = 255.0f, int numOri = 16, float gvCompareThreshold = 60.0f,
+        bool enableGVCompare = false);
+    
     /** Destructor. */
     ~ShapeModelObjectDetector();
     
     /** Load model from file specified by <code>filename</code>. */
     bool Load(const std::string& filename);
+    
     /** Save model to file named <code>filename</code>. */
     bool Save(const std::string& filename) const;
 
@@ -122,7 +131,7 @@ public:
      *
      * \param [in] src              Source image.
      * \param [inout] results       Vector that stores detection results.
-     * \param [in] threshold        Score threshold.
+     * \param [in] threshold        Score threshold range from 0 to 100.
      * \param [in] maxNumMatches    Maximum number of matches.
      */
     bool Detect(cv::Mat& src, std::vector<Result>& results,
@@ -139,39 +148,44 @@ public:
      *                              the resulting image will have the same size
      *                              as <code>region.size</code>.
      */
-    static bool CropImage(const cv::Mat& src, cv::Mat& dst,
+    static void CropImage(const cv::Mat& src, cv::Mat& dst,
         const cv::RotatedRect& region, float scale, bool enableScaling = true);
+    
     /** Provided for convenience. */
-    static bool CropImage(const cv::Mat& src, cv::Mat& dst,
+    static void CropImage(const cv::Mat& src, cv::Mat& dst,
         const Result& result, bool enableScaling = true);
-
-    /** Provided for convenience. */
-    static void BilateralFilter(const cv::Mat& src, cv::Mat& dst,
-        int kernelSize = 7, float sigmaDomain = 10.0f, float sigmaRange = 10.0f);
-
-    /** Provided for convenience. */
-    static void CLAHE(const cv::Mat& src, cv::Mat& dst, float clipLimit,
-        cv::Size gridSize);
-
-    /** Provided for convenience. */
-    static void CreateMask(const cv::Mat& src, cv::Mat& dst, int lowThresh,
-        int highThresh, int dilateSize);
 
     /** Enable / disable detection result refinement. */
     void SetRefine(bool refine = true);
+        
+    /** Set grayvalue comparison threshold. The valid value range is from 0 to 100. */
+    void SetGVCompareThreshold(float thresh);
+        
+    /** Enable / disable grayvalue comparison. */
+    void SetGVCompare(bool enable = true);
+        
     /** Enable / disable debug info printout. */
     void SetDebug(bool debug = true);
+        
     /** Specifies the path of the image on which regions of match were drawn. */
     void SetDebugImagePath(const std::string& path);
+        
     /** Get the reference of internal <code>Line2Dup::Detector</code> object. */
     Line2Dup::Detector& GetDetector();
+        
     /** Get size of paddings. */
     void GetPaddings(int &dw, int &dh);
     
 protected:
     /** Compute size of paddings for image <code>src</code>. */
     void ComputePaddings(const cv::Mat& src);
-    
+        
+    /** Compute Pearson correlation coefficient between template image and source image. */
+    float ComputePearson(const cv::Mat& src);
+        
+    /** Compute mean and sqsum of the given image. */
+    void ComputeMeanSqsum(const cv::Mat& img, float &mean, float &sqsum);
+        
 protected:
     /** Padding width. */
     int m_dw;
@@ -194,14 +208,24 @@ protected:
     /** Size of the original source image. */
     cv::Size m_srcSize;
     
+    /** Template image. */
+    cv::Mat m_imgTmpl;
+    /** Mean value of template image. */
+    float m_tmplMean;
+    /** Sum of squared pixel values of template image. */
+    float m_tmplSqsum;
+    
 public:
     /** Information of scaling and rotation. */
     SMOD::ShapeInfo m_shapeInfo;
     /** Refinement. */
     bool m_refine;
+    /** Grayvalue comparison Threshold. */
+    float m_gvCompareThreshold;
+    /** Enable grayvalue comparison. */
+    bool m_enableGVCompare;
 };
 
 }
 
 #endif        //  #ifndef SMOD_H
-
