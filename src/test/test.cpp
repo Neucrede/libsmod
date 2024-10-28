@@ -7,58 +7,73 @@ void TestSMOD(int argc, char* argv[])
     using namespace SMOD;
 
     std::vector<int> T(2, 0);
-    ShapeModelObjectDetector smod(-180, 180, 1, 0.9, 1.1, 0.1, true,
-        256, T, 50, 100, 360, 16 /* 8 */, 60.0f, true);
-    cv::Mat img = cv::imread(argv[1], cv::IMREAD_GRAYSCALE);
-    smod.SetDebug();
+    ShapeModelObjectDetectorEx smod(
+        -180.0f, 180.0f, 0.1f, 
+        0.9f, 1.1f, 0.1f, 
+        true,
+        512, 
+        T, 
+        25, 50, 360, 
+        16 /* 8 */);
+
+    // smod.SetDebug();
     smod.SetDebugImagePath("smod_result.png");
-    smod.Register(img, cv::Mat(), true);
-    smod.Save("model.yaml");
+    smod.SetRefineAnisoScaling();
+    smod.SetGVCompare();
+    smod.SetGVCompareThreshold(50.0f);
+    smod.SetMaxDistDiff(13);
+
+    std::vector<std::string> classIds;
+    std::vector<cv::Mat> imgs;
+    for (int i = 1; i < argc - 1; ++i) {
+        cv::Mat img = cv::imread(argv[i], cv::IMREAD_GRAYSCALE);
+        if (img.empty()) {
+            return;
+        }
+        else {
+            classIds.push_back(argv[i]);
+            imgs.push_back(img.clone());
+        }
+    }
+
+    {
+        Timer timer;
+        smod.RegisterEx(classIds, imgs, true);
+        timer.out("Register");
+    }
+
+    // smod.Save("model.yaml");
+    // smod.Load("model.yaml");
 
     std::vector<Result> results;
-    cv::Mat imgSrc = cv::imread(argv[2], cv::IMREAD_GRAYSCALE);
-
+    cv::Mat imgSrc = cv::imread(argv[argc - 1], cv::IMREAD_GRAYSCALE);
     if (imgSrc.empty()) return;
 
-    smod.Detect(imgSrc, results, 50, 100);
+    {
+        Timer timer;
+        smod.Detect(imgSrc, results, 50, 100);
+        timer.out("Detect");
+    }
 
-    if (!results.empty()) {
-        cv::Mat imgCrop;
-        smod.CropImage(imgSrc, imgCrop, results[0]);
-        cv::imwrite("A.png", imgCrop);
+    char buf[256];
+    for (int i = 0; i != results.size(); ++i) {
+        std::cout << i << " " << results[i] << "\n";
+        
+        cv::Mat img1;
+        smod.CropImage(imgSrc, img1, results[i], true, false);
+        // smod.CropImage(imgSrc, img1, results[i], false, true);
+        sprintf(buf, "roi_%d.png", i + 1);
+        cv::imwrite(buf, img1);
     }
 }
 
 int main(int argc, char* argv[])
 {
-    using namespace SMOD;
-    
+    if (argc < 3) {
+        return 1;
+    }
     
     TestSMOD(argc, argv);
-
-    /*
-    using namespace SMOD;
-
-    ShapeModelObjectDetector smod(-45, 45, 0.5, 0.8, 1.2, 0.05, true,
-        256, { 4, 8, 16, 32 }, 50, 100);
-    cv::Mat img = cv::imread(argv[1]);
-    Result result(cv::Point2f(3209, 1457), cv::Size2f(2000, 1500),
-        atof(argv[2]), 1.0, 90.0);
-    cv::Mat imgCrop;
-    smod.CropImage(img, imgCrop, result);
-    cv::imwrite("smod_crop.png", imgCrop);
-    */
-    
-    /*
-    std::vector<int> T(2, 0);
-    ShapeModelObjectDetector smod(0, 0, 1.0, 1.0, 1.1, 10, true,
-        256, T, 20, 50);
-    cv::Mat img = cv::imread(argv[1]);
-    
-    cv::Mat img2;
-    smod.BilateralFilter(img, img2, 29, 100, 100);
-    cv::imwrite("img2.png", img2);
-    */
 
     return 0;
 }

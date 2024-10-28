@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.1)
 
+include_directories (${PROJECT_SOURCE_DIR}/src)
+
 # opencv
 find_package(OpenCV 3 REQUIRED core )
 include_directories (${OpenCV_INCLUDE_DIRS})
@@ -11,12 +13,19 @@ find_package(OpenMP REQUIRED)
 set(MIPP_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/sup/MIPP" CACHE PATH "Path of MIPP headers")
 include_directories (${MIPP_INCLUDE_DIR})
 
+# eigen
+# find_package(Eigen3 REQUIRED)
+set(EIGEN3_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/sup/eigen-3.3.9" CACHE PATH "EIGEN3_INCLUDE_DIR")
+include_directories(${EIGEN3_INCLUDE_DIR})
+
+
 add_library(
     smod SHARED
     line2dup.cpp
     shapeinfo.cpp
     nmsboxes.cpp
     smod.cpp
+    result.cpp
 )
 
 set_target_properties(smod PROPERTIES

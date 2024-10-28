@@ -198,11 +198,15 @@ bool ColorGradientPyramid::extractTemplate(Template &templ) const
     // We require a certain number of features
     if (candidates.size() < num_features) {
         if(candidates.size() <= 4) {
-            std::cerr << "Too few features, abort" << std::endl;
+            if (debug) {
+                std::cerr << "Too few features, abort" << std::endl;
+            }
             return false;
         }
         
-        std::cerr << "Have no enough features, exaustive mode" << std::endl;
+        if (debug) {
+            std::cerr << "Have no enough features, exaustive mode" << std::endl;
+        }
     }
 
     // NOTE: Stable sort to agree with old code, which used std::list::sort()
@@ -1371,8 +1375,8 @@ Detector::Detector(int num_features, std::vector<int> T, float weak_thresh,
     if (num_features <= 63) {
         num_features = 63;
     }
-    else if (num_features > 8190) {
-        num_features = 8190;
+    else if (num_features > max_features) {
+        num_features = max_features;
     }
 
     this->max_gradient = max_gradient;
@@ -1401,13 +1405,13 @@ Detector::Detector(int num_features, std::vector<int> T, float weak_thresh,
     }
 }
 
-std::vector<Match> Detector::match(Mat source, float threshold, 
+Detector::MatchesMap Detector::match(Mat source, float threshold, 
     Ptr<ColorGradientPyramid> &quantizer,
     const std::vector<std::string> &class_ids, const Mat mask, 
-    int num_max_matches) const
+    int num_max_matches, float nms_thresh) const
 {
     Timer timer;
-    std::vector<Match> matches;
+    MatchesMap mm;
 
     // Initialize each ColorGradient with our sources
     CV_Assert(mask.empty() || mask.size() == source.size());
@@ -1481,7 +1485,8 @@ std::vector<Match> Detector::match(Mat source, float threshold,
         // Match all templates
         TemplatesMap::const_iterator it = class_templates.begin(), itend = class_templates.end();
         for (; it != itend; ++it) {
-            matchClass(lm_pyramid, sizes, threshold, matches, it->first, it->second, num_max_matches);
+            matchClass(lm_pyramid, sizes, threshold, mm[it->first], it->first, it->second, 
+                num_max_matches, nms_thresh);
         }
     }
     else
@@ -1490,32 +1495,33 @@ std::vector<Match> Detector::match(Mat source, float threshold,
         for (int i = 0; i < (int)class_ids.size(); ++i) {
             TemplatesMap::const_iterator it = class_templates.find(class_ids[i]);
             if (it != class_templates.end()) {
-                matchClass(lm_pyramid, sizes, threshold, matches, it->first, it->second, num_max_matches);
+                matchClass(lm_pyramid, sizes, threshold, mm[it->first], it->first, it->second,
+                    num_max_matches, nms_thresh);
             }
         }
     }
 
     // Sort matches by similarity, and prune any duplicates introduced by pyramid refinement
-    std::sort(matches.begin(), matches.end());
-    std::vector<Match>::iterator new_end = std::unique(matches.begin(), matches.end());
-    matches.erase(new_end, matches.end());
+    for (auto& pair : mm) {
+        auto& matches = pair.second;
+        std::sort(matches.begin(), matches.end());
+        std::vector<Match>::iterator new_end = std::unique(matches.begin(), matches.end());
+        matches.erase(new_end, matches.end());
+    }
 
     if (debug) {
         timer.out("Template matching");
     }
 
-    return matches;
+    return mm;
 }
 
-int Detector::addTemplate(const Mat source, const std::string &class_id,
-        const Mat &object_mask, int num_features)
+bool Detector::makeTemplate(const cv::Mat source, const cv::Mat &object_mask, 
+    TemplatePyramid& tp, int num_features)
 {
-    std::vector<TemplatePyramid> &template_pyramids = class_templates[class_id];
-    int template_id = static_cast<int>(template_pyramids.size());
-
-    TemplatePyramid tp;
+    tp.clear();
     tp.resize(pyramid_levels);
-
+    
     // Extract a template at each pyramid level
     Ptr<ColorGradientPyramid> qp = modality->process(source, object_mask);
 
@@ -1530,25 +1536,40 @@ int Detector::addTemplate(const Mat source, const std::string &class_id,
 
         bool success = qp->extractTemplate(tp[l]);
         if (!success) {
-            return -1;
+            return false;
         }
     }
 
     cropTemplates(tp);
-
-    template_pyramids.push_back(tp);
-    return template_id;
+    return true;    
 }
 
-int Detector::addTemplateRotate(const string &class_id, int zero_id,
-        float theta, cv::Point2f center)
+bool Detector::addTemplate(const Mat source, const std::string &class_id,
+        const Mat &object_mask, int num_features)
+{
+    TemplatePyramid tp;
+    if (!makeTemplate(source, object_mask, tp, num_features)) {
+        return false;
+    }
+
+    return addTemplate(class_id, tp);
+}
+
+bool Detector::addTemplate(const std::string &class_id, const TemplatePyramid& tp)
 {
     std::vector<TemplatePyramid> &template_pyramids = class_templates[class_id];
-    int template_id = static_cast<int>(template_pyramids.size());
+    if (tp.empty()) {
+        return false;
+    }
+    
+    template_pyramids.push_back(tp);
+    return true;
+}
 
-    const auto& to_rotate_tp = template_pyramids[zero_id];
-
-    TemplatePyramid tp;
+bool Detector::makeTemplateRotate(const TemplatePyramid& tp0,
+    float theta, cv::Point2f center, TemplatePyramid& tp)
+{
+    tp.clear();
     tp.resize(pyramid_levels);
 
     for (int l = 0; l < pyramid_levels; ++l) {
@@ -1556,10 +1577,10 @@ int Detector::addTemplateRotate(const string &class_id, int zero_id,
             center /= 2;
         }
 
-        for (auto& f: to_rotate_tp[l].features) {
+        for (auto& f: tp0[l].features) {
             Point2f p;
-            p.x = f.x + to_rotate_tp[l].tl_x;
-            p.y = f.y + to_rotate_tp[l].tl_y;
+            p.x = f.x + tp0[l].tl_x;
+            p.y = f.y + tp0[l].tl_y;
             Point2f p_rot = rotatePoint(p, center, -theta/180*CV_PI);
 
             Feature f_new;
@@ -1586,16 +1607,27 @@ int Detector::addTemplateRotate(const string &class_id, int zero_id,
 
             tp[l].features.push_back(f_new);
         }
+        
         tp[l].pyramid_level = l;
     }
 
     cropTemplates(tp);
 
-    template_pyramids.push_back(tp);
-    return template_id;
+    return true;
 }
 
-const std::vector<Template> &Detector::getTemplates(const std::string &class_id, int template_id) const
+bool Detector::pruneClassTemplate(const std::string &class_id)
+{
+    TemplatesMap::iterator i = class_templates.find(class_id);
+    if (i == class_templates.end()) {
+        return false;
+    }
+    
+    class_templates.erase(i);
+    return true;
+}
+
+const TemplatePyramid &Detector::getTemplates(const std::string &class_id, int template_id) const
 {
     TemplatesMap::const_iterator i = class_templates.find(class_id);
     CV_Assert(i != class_templates.end());
@@ -1750,12 +1782,16 @@ void Detector::matchClass(const LinearMemoryPyramid &lm_pyramid,
     float threshold, std::vector<Match> &matches,
     const std::string &class_id,
     const std::vector<TemplatePyramid> &template_pyramids,
-    int num_max_matches) const
+    int num_max_matches, float nms_thresh) const
 {
-    if ((num_max_matches <= 0) || (num_max_matches > 1024)) {
-        num_max_matches = 1024;
+    if ((num_max_matches <= 0) || (num_max_matches > 65536)) {
+        num_max_matches = 65535;
     }
-    
+
+    if ((nms_thresh < 0) || (nms_thresh >= 1.0f)) {
+        nms_thresh = 0.5f;
+    }
+
 #pragma omp declare reduction \
     (omp_insert: std::vector<Match>: omp_out.insert(omp_out.end(), omp_in.begin(), omp_in.end()))
 
@@ -1808,7 +1844,7 @@ void Detector::matchClass(const LinearMemoryPyramid &lm_pyramid,
                 boundBoxes.emplace_back(match.x, match.y, templ.width, templ.height);
                 scores.push_back(match.similarity);
             }
-            ::NMSBoxes(boundBoxes, scores, 0.9 * threshold, 0.5f, bestIndices);
+            ::NMSBoxes(boundBoxes, scores, 0.9 * threshold, nms_thresh, nms_thresh, bestIndices);
             
             bestCandidates.clear();
             size_t N = std::min((size_t)(2 * num_max_matches), bestIndices.size());

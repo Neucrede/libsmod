@@ -81,6 +81,7 @@ void ShapeInfo::write(cv::FileStorage &fs) const
 void ShapeInfo::produce()
 {
     infos.clear();
+    valid_infos.clear();
 
     assert(angle_range.size() <= 2);
     assert(scale_range.size() <= 2);

@@ -1,0 +1,10 @@
+v1.1
+------------------------------------------------------------------------------
+* New ShapeModelObjectDetectorEx supports multiple template registration and
+  detection.
+* Parallel template registration and object detection.
+* Supports anisotropic scaling refinement.
+* Pearson correlation coefficient based image comparison method.
+* CropImage() function now supports content size scaling and image size 
+  scaling.
+

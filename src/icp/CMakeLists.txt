@@ -1,3 +1,4 @@
+include_directories (${PROJECT_SOURCE_DIR}/src)
 
 # opencv
 find_package(OpenCV 3 REQUIRED)
@@ -13,7 +14,7 @@ set(EIGEN3_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/sup/eigen-3.3.9" CACHE PATH "EIGEN
 include_directories(${EIGEN3_INCLUDE_DIR})
 
 # src
-SET(icp_srcs  icp.cpp scene/common.cpp scene/edge_scene/edge_scene.cpp)
+SET(icp_srcs icp.cpp edge_scene.cpp)
 
 # lib & test exe
 add_library(icp STATIC ${icp_srcs})

@@ -39,7 +39,7 @@ inline void GetMaxScoreIndex(const std::vector<float>& scores, const float thres
 template <typename BoxType>
 inline void NMSFast_(const std::vector<BoxType>& bboxes,
       const std::vector<float>& scores, const float score_threshold,
-      const float nms_threshold, const float eta, const int top_k,
+      const float nms_threshold, const float max_overlap, const float eta, const int top_k,
       std::vector<int>& indices, float (*computeOverlap)(const BoxType&, const BoxType&))
 {
     CV_Assert(bboxes.size() == scores.size());
@@ -52,15 +52,19 @@ inline void NMSFast_(const std::vector<BoxType>& bboxes,
     for (size_t i = 0; i < score_index_vec.size(); ++i) {
         const int idx = score_index_vec[i].second;
         bool keep = true;
+
         for (int k = 0; k < (int)indices.size() && keep; ++k) {
             const int kept_idx = indices[k];
             float overlap = computeOverlap(bboxes[idx], bboxes[kept_idx]);
-            keep = overlap <= adaptive_threshold;
+            keep = (overlap <= adaptive_threshold);
         }
-        if (keep)
+
+        if (keep) {
             indices.push_back(idx);
-        if (keep && eta < 1 && adaptive_threshold > 0.5) {
-          adaptive_threshold *= eta;
+        }
+
+        if (keep && (eta > 0.0001f) && (eta < 0.9999f) && (adaptive_threshold >= max_overlap)) {
+            adaptive_threshold *= eta;
         }
     }
 }
@@ -92,12 +96,12 @@ static inline float rectOverlap(const T& a, const T& b)
 
 
 void NMSBoxes(const std::vector<cv::Rect>& bboxes, const std::vector<float>& scores,
-    const float score_threshold, const float nms_threshold,
+    const float score_threshold, const float nms_threshold, const float max_overlap,
     std::vector<int>& indices, const float eta, const int top_k)
 {
     using namespace _cv_dnn;
     
-    NMSFast_(bboxes, scores, score_threshold, nms_threshold, eta, top_k, 
+    NMSFast_(bboxes, scores, score_threshold, nms_threshold, max_overlap, eta, top_k, 
         indices, rectOverlap);
 }
 

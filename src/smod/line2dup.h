@@ -9,7 +9,7 @@
 
 namespace SMOD
 {
-    class ShapeModelObjectDetector;
+    class ShapeModelObjectDetectorBase;
 }
 
 namespace Line2Dup
@@ -158,7 +158,7 @@ struct Match
     Match()
     {
     }
-
+    
     Match(int _x, int _y, float _similarity, const std::string &_class_id, 
         int _template_id)
     : x(_x), y(_y), similarity(_similarity), class_id(_class_id), 
@@ -186,15 +186,18 @@ struct Match
 
 // ----------------------------------------------------------------------------
 
+typedef std::vector<Template> TemplatePyramid;
+
 class Detector
 {
 public:
-    typedef std::vector<Template> TemplatePyramid;
     typedef std::map<std::string, std::vector<TemplatePyramid>> TemplatesMap;
-
     typedef std::vector<cv::Mat> LinearMemories;
+
     // Indexed as [pyramid level][ColorGradient][quantized label]
     typedef std::vector<std::vector<LinearMemories>> LinearMemoryPyramid;
+
+    typedef std::map<std::string, std::vector<Match>> MatchesMap;
 
 public:
     Detector();
@@ -202,17 +205,22 @@ public:
     Detector(int num_features, std::vector<int> T, float weak_thresh = 30.0f, 
         float strong_thresh = 60.0f, float max_gradient = 360.0f, int num_ori = 16);
 
-    std::vector<Match> match(cv::Mat sources, float threshold,
+    MatchesMap match(cv::Mat sources, float threshold,
         cv::Ptr<ColorGradientPyramid> &quantizer,
         const std::vector<std::string> &class_ids = std::vector<std::string>(),
-        const cv::Mat mask = cv::Mat(), int num_max_matches = -1) const;
-
-    int addTemplate(const cv::Mat sources, const std::string &class_id,
-        const cv::Mat &object_mask, int num_features = 0);
-    int addTemplateRotate(const std::string &class_id, int zero_id, float theta,
-        cv::Point2f center);
+        const cv::Mat mask = cv::Mat(), int num_max_matches = -1,
+        float nms_thresh = 0.5) const;
     
-    const std::vector<Template> &getTemplates(const std::string &class_id, int template_id) const;
+    bool makeTemplate(const cv::Mat source, const cv::Mat &object_mask, 
+        TemplatePyramid& tp, int num_features = 0);
+    bool addTemplate(const cv::Mat source, const std::string &class_id,
+        const cv::Mat &object_mask, int num_features = 0);
+    bool addTemplate(const std::string &class_id, const TemplatePyramid& tp);
+    bool makeTemplateRotate(const TemplatePyramid& tp0,
+        float theta, cv::Point2f center, TemplatePyramid& tp);
+    
+    bool pruneClassTemplate(const std::string &class_id);
+    const TemplatePyramid& getTemplates(const std::string &class_id, int template_id) const;
     int numTemplates() const;
     int numTemplates(const std::string &class_id) const;
     std::vector<std::string> classIds() const;
@@ -255,10 +263,10 @@ protected:
         float threshold, std::vector<Match> &matches,
         const std::string &class_id,
         const std::vector<TemplatePyramid> &template_pyramids,
-        int num_max_matches) const;
+        int num_max_matches, float nms_thresh) const;
     
 protected:
-    friend class SMOD::ShapeModelObjectDetector;
+    friend class SMOD::ShapeModelObjectDetectorBase;
 
     int num_ori;
     float max_gradient;

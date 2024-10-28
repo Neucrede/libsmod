@@ -341,21 +341,24 @@ static inline void eigenvals(vector<double> &a, double eigval[2], double eigvec[
 // end https://github.com/songyuncen/EdgesSubPix/blob/master/EdgesSubPix.cpp
 
 template<class T>
-T pow2(const T& in){return in*in;}
+T pow2(const T& in)
+{
+    return in*in;
+}
 
 void Scene_edge::init_Scene_edge_cpu(cv::Mat img, std::vector<::Vec2f> &pcd_buffer,
     std::vector<::Vec2f>& normal_buffer, float max_dist_diff, float weakThresh, 
-    float strongThresh, const cv::Mat& matDx, const cv::Mat& matDy)
+    float strongThresh, const cv::Mat& matDx, const cv::Mat& matDy, bool debug)
 {
     Timer timer;
-
+    
     width = img.cols;
     height = img.rows;
     this->max_dist_diff = max_dist_diff;
-
+    
     Mat dx, dy;
     
-
+    
     bool gradientMatricesAvailable = !(matDx.empty() || matDy.empty());
     if (!gradientMatricesAvailable) {
         cv::Mat gray;
@@ -366,11 +369,11 @@ void Scene_edge::init_Scene_edge_cpu(cv::Mat img, std::vector<::Vec2f> &pcd_buff
         else{
             gray = img;
         }
-
-        double alpha = 1;
-        Mat blur;
-        GaussianBlur(gray, blur, Size(5, 5), alpha, alpha);
-
+        
+        double alpha = 1.8;
+        Mat blur = gray;
+        GaussianBlur(gray, blur, Size(3, 3), alpha, alpha);
+        
         Mat d;
         getCannyKernel(d, alpha);
         Mat one = Mat::ones(Size(1, 1), CV_16S);
@@ -381,46 +384,54 @@ void Scene_edge::init_Scene_edge_cpu(cv::Mat img, std::vector<::Vec2f> &pcd_buff
         dx = matDx;
         dy = matDy;
     }
-
-    timer.out("init_scene_edge: compute gradients");
-
+    
+    if (debug) {
+        timer.out("init_scene_edge: compute gradients");
+    }
+    
     // non-maximum supression & hysteresis threshold
     Mat edge = Mat::zeros(img.size(), CV_8UC1);
     int lowThresh = cvRound(scale * weakThresh);
     int highThresh = cvRound(scale * strongThresh);
     postCannyFilter(img, dx, dy, lowThresh, highThresh, edge);
     
-    timer.out("init_scene_edge: postCannyFilter");
-
+    if (debug) {
+        timer.out("init_scene_edge: postCannyFilter");
+    }
+    
     normal_buffer.clear();
     normal_buffer.resize(img.rows * img.cols);
-
+    
     pcd_buffer.clear();
     pcd_buffer.resize(img.rows * img.cols, ::Vec2f(-1, -1)); // -1 indicate no edge around
     
-    timer.out("init_scene_edge: initialize normal_buffer and pcd_buffer");
-
+    if (debug) {
+        timer.out("init_scene_edge: initialize normal_buffer and pcd_buffer");
+    }
+    
     std::vector<::Vec2f> pcd_buffer_fixed; // = pcd_buffer;
     std::vector<::Vec2f> normal_buffer_fixed; // = normal_buffer;
     normal_buffer_fixed.resize(img.rows * img.cols);
     pcd_buffer_fixed.resize(img.rows * img.cols, ::Vec2f(-1, -1));
-
-    timer.out("init_scene_edge: initialize normal_buffer_fixed and pcd_buffer_fixed");
-
-#pragma omp parallel for
+    
+    if (debug) {
+        timer.out("init_scene_edge: initialize normal_buffer_fixed and pcd_buffer_fixed");
+    }
+    
+    #pragma omp parallel for
     for(int r=0; r<img.rows; r++){
         for(int c=0; c<img.cols; c++){
             if(edge.at<uchar>(r, c) > 0){  // get normals & pcds at edge only
-
+                
                 int w = dx.cols;
                 int h = dx.rows;
                 Point icontour = {c, r};
-
+                
                 vector<double> magNeighbour(9);
                 getMagNeighbourhood(dx, dy, icontour, w, h, magNeighbour);
                 vector<double> a(9);
                 get2ndFacetModelIn3x3(magNeighbour, a);
-
+                
                 // Hessian eigen vector
                 double eigvec[2][2], eigval[2];
                 eigenvals(a, eigval, eigvec);
@@ -441,15 +452,17 @@ void Scene_edge::init_Scene_edge_cpu(cv::Mat img, std::vector<::Vec2f> &pcd_buff
                     x += (float)px;
                     y += (float)py;
                 }
-
+                
                 normal_buffer_fixed[c + r*img.cols] = {float(nx), float(-ny)};
                 pcd_buffer_fixed[c +r*img.cols] = {x, y};
             }
         }
     }
-
-    timer.out("init_scene_edge: compute normal_buffer_fixed and pcd_buffer_fixed");
-
+    
+    if (debug) {
+        timer.out("init_scene_edge: compute normal_buffer_fixed and pcd_buffer_fixed");
+    }
+    
     cv::Mat dist_buffer(img.size(), CV_32FC1, FLT_MAX);
     int kernel_size = int(max_dist_diff+0.5f);
     int max_dist_sq = pow2(max_dist_diff);
@@ -459,16 +472,16 @@ void Scene_edge::init_Scene_edge_cpu(cv::Mat img, std::vector<::Vec2f> &pcd_buff
                 auto &pcd = pcd_buffer_fixed[c + r*img.cols];
                 for(int i=-kernel_size; i<=kernel_size; i++){
                     for(int j=-kernel_size; j<=kernel_size; j++){
-
+                        
                         float dist_sq = pow2(i) + pow2(j);
                         // float dist_sq = pow2(j-(pcd.x-c)) + pow2(i-(pcd.y-r));
                         
                         // don't go too far
                         if(dist_sq > max_dist_sq) continue;
-
+                        
                         int new_r = r + i;
                         int new_c = c + j;
-
+                        
                         // if closer
                         if(dist_sq < dist_buffer.at<float>(new_r, new_c)){
                             pcd_buffer[new_c + new_r*img.cols] = pcd;
@@ -481,7 +494,9 @@ void Scene_edge::init_Scene_edge_cpu(cv::Mat img, std::vector<::Vec2f> &pcd_buff
         }
     }   
     
-    timer.out("init_scene_edge: compute normal_buffer and pcd_buffer");
+    if (debug) {
+        timer.out("init_scene_edge: compute normal_buffer and pcd_buffer");
+    }
 
     pcd_ptr = pcd_buffer.data();
     normal_ptr = normal_buffer.data();
