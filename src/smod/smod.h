@@ -172,6 +172,9 @@ public:
         bool enableImageSizeScaling = true,
         cv::Size imageSize = cv::Size());
 
+    /** Compute size of paddings for image <code>src</code>. */
+    static void ComputePaddings(const cv::Mat& src, int& dw, int& dh);
+        
     /** Enable / disable detection result refinement. */
     void SetRefine(bool refine = true);
     
@@ -275,9 +278,6 @@ protected:
     void InitDetect(const cv::Mat& src, int maxNumMatches, cv::Mat& srcGray, 
         cv::Mat& srcPadded, cv::Mat& imgDbg, int& maxNumMatches1, cv::Point& offset) const;
 
-    /** Compute size of paddings for image <code>src</code>. */
-    void ComputePaddings(const cv::Mat& src, int& dw, int& dh) const;
-        
     /** Compute Pearson correlation coefficient between template image and source image. */
     float ComputePearson(const cv::Mat& src, const TemplateInfo& tmplInfo) const;
         

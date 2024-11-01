@@ -669,6 +669,13 @@ void ShapeModelObjectDetectorBase::CropImage(const cv::Mat& src, cv::Mat& dst,
             scaleContentToRegionSize, enableImageSizeScaling, imageSize);
 }
 
+void ShapeModelObjectDetectorBase::ComputePaddings(const cv::Mat& src, int& dw, int& dh)
+{
+    int lenDiag = std::ceil(std::hypot(src.cols, src.rows));
+    dw = std::ceil((lenDiag - src.cols) / 2.0f);
+    dh = std::ceil((lenDiag - src.rows) / 2.0f);
+}
+
 void ShapeModelObjectDetectorBase::SetRefine(bool refine)
 {
     m_refine = refine;
@@ -772,13 +779,6 @@ void ShapeModelObjectDetectorBase::SetNMSDampFactor(float damp)
 float ShapeModelObjectDetectorBase::GetNMSDampFactor() const
 {
     return m_nmsDampFactor;
-}
-
-void ShapeModelObjectDetectorBase::ComputePaddings(const cv::Mat& src, int& dw, int& dh) const
-{
-    int lenDiag = std::ceil(std::hypot(src.cols, src.rows));
-    dw = std::ceil((lenDiag - src.cols) / 2.0f);
-    dh = std::ceil((lenDiag - src.rows) / 2.0f);
 }
 
 float ShapeModelObjectDetectorBase::ComputePearson(const cv::Mat& src, 
