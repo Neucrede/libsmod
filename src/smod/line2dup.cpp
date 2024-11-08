@@ -1784,7 +1784,7 @@ void Detector::matchClass(const LinearMemoryPyramid &lm_pyramid,
     const std::vector<TemplatePyramid> &template_pyramids,
     int num_max_matches, float nms_thresh) const
 {
-    if ((num_max_matches <= 0) || (num_max_matches > 65536)) {
+    if ((num_max_matches <= 0) || (num_max_matches > 65535)) {
         num_max_matches = 65535;
     }
 

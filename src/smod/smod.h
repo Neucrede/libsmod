@@ -269,7 +269,7 @@ protected:
      *                              template if left empty.
      * \param [in] mask             Optional 8-bit single channel mask. 
      */
-    virtual bool Detect(cv::Mat& src, std::vector<Result>& results,
+    virtual bool Detect(const cv::Mat& src, std::vector<Result>& results,
         float threshold = 75.0f, int maxNumMatches = 1,
         const std::vector<std::string>& classIds = {},
         const cv::Mat& mask = cv::Mat()) const;
@@ -355,7 +355,7 @@ public:
      * \param [in] threshold        Score threshold range from 0 to 100.
      * \param [in] maxNumMatches    Maximum number of matches.
      */
-    bool Detect(cv::Mat& src, std::vector<Result>& results,
+    bool Detect(const cv::Mat& src, std::vector<Result>& results,
         float threshold = 75.0f, int maxNumMatches = 1) const;
 };
 

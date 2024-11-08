@@ -8,6 +8,7 @@
 #include <opencv2/imgcodecs.hpp>
 #include <Eigen/Core>
 #include <Eigen/QR>
+#include <stdlib.h>
 #include <omp.h>
 #include "smod.h"
 #include "nmsboxes.h"
@@ -21,6 +22,8 @@ namespace SMOD
 
 using namespace SMOD;
 using namespace Line2Dup;
+
+static int GetOMPNumThreads();
 
 ShapeModelObjectDetectorBase::ShapeModelObjectDetectorBase( 
     float angleMin, float angleMax, float angleStep,
@@ -67,7 +70,7 @@ int ShapeModelObjectDetectorBase::RegisterEx(const std::vector<std::string>& cla
         std::cout << "Debug print is enabled. Limited to single worker thread." << std::endl;
     } 
 
-    int numThreads = (!fast || m_debug) ? 1 : omp_get_num_procs();
+    int numThreads = (!fast || m_debug) ? 1 : GetOMPNumThreads();
 
     typedef std::tuple<std::vector<Line2Dup::TemplatePyramid>, TemplateInfo> TpInfoPair;
     std::vector<TpInfoPair> tpInfos;
@@ -164,7 +167,7 @@ bool ShapeModelObjectDetectorBase::RegisterInternal(const cv::Mat& img, const cv
         std::vector<TpInfoPair> tpInfos;
         tpInfos.reserve(shapeInfo.infos.size());
 
-        int numThreads = (m_debug || fast) ? 1 : omp_get_num_procs();
+        int numThreads = (m_debug || fast) ? 1 : GetOMPNumThreads();
         
         #pragma omp declare reduction ( \
             omp_insert  \
@@ -297,7 +300,7 @@ void ShapeModelObjectDetectorBase::InitDetect(const cv::Mat& src, int maxNumMatc
         16);
     const int srcPaddedWidth = std::ceil((float)(src.cols + 2 * max_dw) / (float)stride) * stride;
     const int srcPaddedHeight = std::ceil((float)(src.rows + 2 * max_dh) / (float)stride) * stride;
-    srcPadded = cv::Mat(srcPaddedHeight, srcPaddedWidth, src.type(), cv::Scalar::all(0));
+    srcPadded = cv::Mat(srcPaddedHeight, srcPaddedWidth, srcGray.type(), cv::Scalar::all(0));
     srcGray.copyTo(srcPadded(cv::Rect(max_dw, max_dh, srcGray.cols, srcGray.rows)));
 
     if (m_debug) {
@@ -314,12 +317,12 @@ void ShapeModelObjectDetectorBase::InitDetect(const cv::Mat& src, int maxNumMatc
     }
     
     maxNumMatches1 = maxNumMatches;
-    if ((maxNumMatches > 1024) || (m_enableGVCompare)) {
-        maxNumMatches1 = 1024;
+    if ((maxNumMatches > 65535) || (m_enableGVCompare)) {
+        maxNumMatches1 = 65535;
     }
 }
 
-bool ShapeModelObjectDetectorBase::Detect(cv::Mat& src, 
+bool ShapeModelObjectDetectorBase::Detect(const cv::Mat& src, 
     std::vector<Result>& results, float threshold, int maxNumMatches,
     const std::vector<std::string>& classIds, const cv::Mat& mask) const
 {
@@ -412,7 +415,7 @@ bool ShapeModelObjectDetectorBase::Detect(cv::Mat& src,
     }
     
     const int N = goodMatches.size();
-    int numThreads = m_debug ? 1 : omp_get_num_procs();
+    int numThreads = m_debug ? 1 : GetOMPNumThreads();
     int resultResvSize = (((maxNumMatches / numThreads) >> 1) << 1);
     if (resultResvSize < 1) {
         resultResvSize = 2;
@@ -897,7 +900,7 @@ bool ShapeModelObjectDetector::Register(const cv::Mat& img, const cv::Mat& mask,
             { defaultClassId }, { img }, fast, { mask }) > 0);
 }
 
-bool ShapeModelObjectDetector::Detect(cv::Mat& src, 
+bool ShapeModelObjectDetector::Detect(const cv::Mat& src, 
     std::vector<Result>& results, float threshold, int maxNumMatches) const
 {
     return ShapeModelObjectDetectorBase::Detect(src, results, threshold, 
@@ -1020,3 +1023,24 @@ bool ShapeModelObjectDetectorEx::Register(const cv::Mat& img, const cv::Mat& mas
 {
     return (ShapeModelObjectDetectorBase::RegisterEx({ classId }, { img }, fast, { mask }) > 0);
 }
+
+//////////////////////////////////////////////////////////////////////////////
+
+static int GetOMPNumThreads()
+{
+    int numProcs = omp_get_num_procs();
+
+    int numThreadsEnv = 0;
+    char *ompNumThreadsEnv = getenv("OMP_NUM_THREADS");
+    if (strlen(ompNumThreadsEnv) > 0) {
+        numThreadsEnv = strtol(ompNumThreadsEnv, NULL, 10);
+    }
+
+    if ((numThreadsEnv > 0) && (numThreadsEnv <= numProcs)) {
+        return numThreadsEnv;
+    }
+    else {
+        return numProcs;
+    }
+}
+
