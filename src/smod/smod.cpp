@@ -1032,7 +1032,7 @@ static int GetOMPNumThreads()
 
     int numThreadsEnv = 0;
     char *ompNumThreadsEnv = getenv("OMP_NUM_THREADS");
-    if (strlen(ompNumThreadsEnv) > 0) {
+    if (ompNumThreadsEnv && (strlen(ompNumThreadsEnv) > 0)) {
         numThreadsEnv = strtol(ompNumThreadsEnv, NULL, 10);
     }
 
